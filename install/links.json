@@ -1,0 +1,70 @@
+{
+  "links": [
+    {
+      "name": "architect agent",
+      "kind": "file",
+      "source": ".codex/agents/architect.toml",
+      "target": ".codex/agents/architect.toml"
+    },
+    {
+      "name": "developer agent",
+      "kind": "file",
+      "source": ".codex/agents/developer.toml",
+      "target": ".codex/agents/developer.toml"
+    },
+    {
+      "name": "tester agent",
+      "kind": "file",
+      "source": ".codex/agents/tester.toml",
+      "target": ".codex/agents/tester.toml"
+    },
+    {
+      "name": "infrastructure engineer agent",
+      "kind": "file",
+      "source": ".codex/agents/infrastructure-engineer.toml",
+      "target": ".codex/agents/infrastructure-engineer.toml"
+    },
+    {
+      "name": "repository assessment skill",
+      "kind": "directory",
+      "source": ".agents/skills/repository-assessment",
+      "target": ".agents/skills/repository-assessment"
+    },
+    {
+      "name": "architecture decision skill",
+      "kind": "directory",
+      "source": ".agents/skills/architecture-decision",
+      "target": ".agents/skills/architecture-decision"
+    },
+    {
+      "name": "C4 modeling skill",
+      "kind": "directory",
+      "source": ".agents/skills/c4-modeling",
+      "target": ".agents/skills/c4-modeling"
+    },
+    {
+      "name": "test-driven development skill",
+      "kind": "directory",
+      "source": ".agents/skills/test-driven-development",
+      "target": ".agents/skills/test-driven-development"
+    },
+    {
+      "name": "code review skill",
+      "kind": "directory",
+      "source": ".agents/skills/code-review",
+      "target": ".agents/skills/code-review"
+    },
+    {
+      "name": "infrastructure as code skill",
+      "kind": "directory",
+      "source": ".agents/skills/infrastructure-as-code",
+      "target": ".agents/skills/infrastructure-as-code"
+    },
+    {
+      "name": "CI/CD design skill",
+      "kind": "directory",
+      "source": ".agents/skills/ci-cd-design",
+      "target": ".agents/skills/ci-cd-design"
+    }
+  ]
+}
