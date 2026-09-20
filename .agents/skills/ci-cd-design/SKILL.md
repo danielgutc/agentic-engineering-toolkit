@@ -5,16 +5,16 @@ description: Design, implement, or review continuous-integration and delivery wo
 
 # CI/CD Design
 
-Create delivery workflows that are reproducible, observable, secure, and proportional to project risk.
+Create DevOps feedback and delivery workflows that are reproducible, observable, secure, and proportional to project risk.
 
 ## Workflow
 
-1. Identify change sources, target environments, release frequency, compliance needs, and failure tolerance.
-2. Inspect existing build, test, packaging, secret, and deployment conventions.
-3. Separate validation, artifact creation, promotion, deployment, and post-deployment verification.
+1. Identify change sources, traced quality requirements, target environments, release frequency, compliance needs, and failure tolerance.
+2. Inspect existing build, test, packaging, secret, deployment, and observability conventions.
+3. Separate fast feedback, unit and component validation, integrated verification, artifact creation, promotion, deployment, and post-deployment checks.
 4. Build an immutable artifact once and promote it between environments where practical.
 5. Apply least privilege, protected environments, explicit approvals, and concurrency controls.
-6. Define failure reporting, retry behavior, rollback, and recovery ownership.
+6. Define failure reporting, retry semantics, deployment health signals, rollback, and recovery ownership.
 7. Validate pipeline syntax and safe non-deployment paths before proposing activation.
 
 ## Boundaries

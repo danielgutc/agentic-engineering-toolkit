@@ -1,22 +1,28 @@
 {
   "links": [
     {
-      "name": "architect agent",
+      "name": "product owner agent",
       "kind": "file",
-      "source": ".codex/agents/architect.toml",
-      "target": ".codex/agents/architect.toml"
+      "source": ".codex/agents/product-owner.toml",
+      "target": ".codex/agents/product-owner.toml"
     },
     {
-      "name": "developer agent",
+      "name": "solutions architect agent",
       "kind": "file",
-      "source": ".codex/agents/developer.toml",
-      "target": ".codex/agents/developer.toml"
+      "source": ".codex/agents/solutions-architect.toml",
+      "target": ".codex/agents/solutions-architect.toml"
     },
     {
-      "name": "tester agent",
+      "name": "technical architect agent",
       "kind": "file",
-      "source": ".codex/agents/tester.toml",
-      "target": ".codex/agents/tester.toml"
+      "source": ".codex/agents/technical-architect.toml",
+      "target": ".codex/agents/technical-architect.toml"
+    },
+    {
+      "name": "software engineer agent",
+      "kind": "file",
+      "source": ".codex/agents/software-engineer.toml",
+      "target": ".codex/agents/software-engineer.toml"
     },
     {
       "name": "infrastructure engineer agent",
@@ -25,10 +31,40 @@
       "target": ".codex/agents/infrastructure-engineer.toml"
     },
     {
+      "name": "test engineer agent",
+      "kind": "file",
+      "source": ".codex/agents/test-engineer.toml",
+      "target": ".codex/agents/test-engineer.toml"
+    },
+    {
       "name": "repository assessment skill",
       "kind": "directory",
       "source": ".agents/skills/repository-assessment",
       "target": ".agents/skills/repository-assessment"
+    },
+    {
+      "name": "product discovery skill",
+      "kind": "directory",
+      "source": ".agents/skills/product-discovery",
+      "target": ".agents/skills/product-discovery"
+    },
+    {
+      "name": "requirements specification skill",
+      "kind": "directory",
+      "source": ".agents/skills/requirements-specification",
+      "target": ".agents/skills/requirements-specification"
+    },
+    {
+      "name": "domain modeling skill",
+      "kind": "directory",
+      "source": ".agents/skills/domain-modeling",
+      "target": ".agents/skills/domain-modeling"
+    },
+    {
+      "name": "solution architecture skill",
+      "kind": "directory",
+      "source": ".agents/skills/solution-architecture",
+      "target": ".agents/skills/solution-architecture"
     },
     {
       "name": "architecture decision skill",
@@ -43,6 +79,12 @@
       "target": ".agents/skills/c4-modeling"
     },
     {
+      "name": "technical design skill",
+      "kind": "directory",
+      "source": ".agents/skills/technical-design",
+      "target": ".agents/skills/technical-design"
+    },
+    {
       "name": "test-driven development skill",
       "kind": "directory",
       "source": ".agents/skills/test-driven-development",
@@ -53,6 +95,12 @@
       "kind": "directory",
       "source": ".agents/skills/code-review",
       "target": ".agents/skills/code-review"
+    },
+    {
+      "name": "integration and end-to-end testing skill",
+      "kind": "directory",
+      "source": ".agents/skills/integration-e2e-testing",
+      "target": ".agents/skills/integration-e2e-testing"
     },
     {
       "name": "infrastructure as code skill",

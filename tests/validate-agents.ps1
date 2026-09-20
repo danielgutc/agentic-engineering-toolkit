@@ -7,25 +7,47 @@ $ErrorActionPreference = 'Stop'
 $repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $agentDirectory = Join-Path $repositoryRoot '.codex/agents'
 $expectedAgents = [ordered]@{
-    'architect.toml' = @{
-        Name = 'architect'
-        Sandbox = 'read-only'
-        Skills = @('repository-assessment', 'architecture-decision', 'c4-modeling')
-    }
-    'developer.toml' = @{
-        Name = 'developer'
+    'product-owner.toml' = @{
+        Name = 'product_owner'
+        Model = 'gpt-5.6-sol'
+        ReasoningEffort = 'medium'
         Sandbox = 'workspace-write'
-        Skills = @('repository-assessment', 'test-driven-development')
+        Skills = @('repository-assessment', 'product-discovery', 'requirements-specification', 'domain-modeling')
     }
-    'tester.toml' = @{
-        Name = 'tester'
+    'solutions-architect.toml' = @{
+        Name = 'solutions_architect'
+        Model = 'gpt-5.6-sol'
+        ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
-        Skills = @('repository-assessment', 'code-review')
+        Skills = @('repository-assessment', 'solution-architecture', 'domain-modeling', 'architecture-decision', 'c4-modeling')
+    }
+    'technical-architect.toml' = @{
+        Name = 'technical_architect'
+        Model = 'gpt-5.6-sol'
+        ReasoningEffort = 'high'
+        Sandbox = 'workspace-write'
+        Skills = @('repository-assessment', 'technical-design', 'domain-modeling', 'architecture-decision', 'c4-modeling', 'test-driven-development')
+    }
+    'software-engineer.toml' = @{
+        Name = 'software_engineer'
+        Model = 'gpt-5.6-terra'
+        ReasoningEffort = 'medium'
+        Sandbox = 'workspace-write'
+        Skills = @('repository-assessment', 'test-driven-development', 'code-review')
     }
     'infrastructure-engineer.toml' = @{
         Name = 'infrastructure_engineer'
+        Model = 'gpt-5.6-terra'
+        ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'architecture-decision', 'infrastructure-as-code', 'ci-cd-design')
+    }
+    'test-engineer.toml' = @{
+        Name = 'test_engineer'
+        Model = 'gpt-5.6-luna'
+        ReasoningEffort = 'medium'
+        Sandbox = 'workspace-write'
+        Skills = @('repository-assessment', 'integration-e2e-testing', 'code-review')
     }
 }
 
@@ -49,6 +71,8 @@ foreach ($entry in $expectedAgents.GetEnumerator()) {
 
     $content = Get-Content -LiteralPath $path -Raw
     $expectedName = [regex]::Escape($entry.Value.Name)
+    $expectedModel = [regex]::Escape($entry.Value.Model)
+    $expectedReasoningEffort = [regex]::Escape($entry.Value.ReasoningEffort)
     $expectedSandbox = [regex]::Escape($entry.Value.Sandbox)
 
     if ($content -notmatch "(?m)^name\s*=\s*`"$expectedName`"\s*$") {
@@ -57,6 +81,14 @@ foreach ($entry in $expectedAgents.GetEnumerator()) {
 
     if ($content -notmatch '(?m)^description\s*=\s*".+"\s*$') {
         $errors.Add("$($entry.Key) does not define a description.")
+    }
+
+    if ($content -notmatch "(?m)^model\s*=\s*`"$expectedModel`"\s*$") {
+        $errors.Add("$($entry.Key) does not define model '$($entry.Value.Model)'.")
+    }
+
+    if ($content -notmatch "(?m)^model_reasoning_effort\s*=\s*`"$expectedReasoningEffort`"\s*$") {
+        $errors.Add("$($entry.Key) does not define reasoning effort '$($entry.Value.ReasoningEffort)'.")
     }
 
     if ($content -notmatch "(?m)^sandbox_mode\s*=\s*`"$expectedSandbox`"\s*$") {

@@ -19,18 +19,33 @@ tests/               Dependency-free structural validation
 
 ## Agents
 
-| Agent | Primary responsibility | Default access |
-| --- | --- | --- |
-| `architect` | Architecture, boundaries, tradeoffs, and technical decisions | Read-only |
-| `developer` | Approved implementation and developer-level tests | Workspace write |
-| `tester` | Test design, independent verification, and regression analysis | Workspace write |
-| `infrastructure_engineer` | Build, deployment, environments, observability, and infrastructure | Workspace write |
+| Agent | Model | Primary responsibility | Default access |
+| --- | --- | --- | --- |
+| `product_owner` | `gpt-5.6-sol` (medium) | Product outcomes, MVP scope, UX intent, and testable requirements | Workspace write |
+| `solutions_architect` | `gpt-5.6-sol` (high) | System boundaries, domain architecture, C4 context and containers, and solution tradeoffs | Workspace write |
+| `technical_architect` | `gpt-5.6-sol` (high) | Container internals, components, interfaces, skeletons, test strategy, and engineering toolsets | Workspace write |
+| `software_engineer` | `gpt-5.6-terra` (medium) | TDD implementation of approved behavior and developer-level tests | Workspace write |
+| `infrastructure_engineer` | `gpt-5.6-terra` (high) | DevOps, build, delivery, environments, observability, and infrastructure as code | Workspace write |
+| `test_engineer` | `gpt-5.6-luna` (medium) | Independent integration, contract, end-to-end, acceptance, and regression verification | Workspace write |
 
-Custom agents intentionally contain no project-specific architecture or lifecycle rules. They inherit applicable project instructions and use relevant skills when a task calls for them.
+The default ownership flow is `product_owner -> solutions_architect -> technical_architect -> software_engineer/infrastructure_engineer -> test_engineer`. Each role stays at its assigned abstraction level, follows project approval gates, and returns consequential changes to the appropriate owner rather than silently widening scope.
+
+Custom agents contain reusable engineering lifecycle rules but no project-specific architecture. They inherit applicable project instructions and route repeatable work to relevant skills.
 
 ## Skills
 
-Skills are independent capabilities rather than agent personas. A skill may be used by multiple agents; for example, both an architect and infrastructure engineer may use `architecture-decision`.
+Skills are independent capabilities rather than agent personas. A skill may be used by multiple agents; for example, both the solutions architect and infrastructure engineer may use `architecture-decision`.
+
+| Lifecycle area | Skills |
+| --- | --- |
+| Orientation | `repository-assessment` |
+| Product and specification | `product-discovery`, `requirements-specification` |
+| Domain and solution | `domain-modeling`, `solution-architecture`, `architecture-decision`, `c4-modeling` |
+| Technical design and implementation | `technical-design`, `test-driven-development`, `code-review` |
+| Integrated verification | `integration-e2e-testing` |
+| Delivery and operations | `infrastructure-as-code`, `ci-cd-design` |
+
+Skill entrypoints stay focused. Conditional detail, such as strategic versus tactical domain-driven design, is loaded from references only when the task needs it.
 
 Codex discovers user-level skills under `~/.agents/skills` and user-level custom agents under `~/.codex/agents`.
 

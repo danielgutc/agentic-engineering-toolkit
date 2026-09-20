@@ -9,10 +9,10 @@ Prioritize actionable defects over summaries and stylistic preferences.
 
 ## Workflow
 
-1. Read applicable instructions and identify the intended behavior of the change.
+1. Read applicable instructions and identify the intended requirement, design, and abstraction level of the change.
 2. Inspect the diff and trace affected execution paths beyond the changed lines.
-3. Check boundary conditions, state transitions, error handling, compatibility, and operational effects.
-4. Evaluate whether tests cover meaningful behavior and failure modes.
+3. Check boundary conditions, state transitions, error handling, compatibility, operational effects, and drift across approved boundaries or contracts.
+4. Evaluate whether tests cover meaningful behavior, failure modes, and the appropriate test level.
 5. Validate suspected defects when practical; do not report speculation as fact.
 6. Return findings ordered by severity with tight file and line references.
 7. State explicitly when no findings are discovered and identify residual testing limitations.

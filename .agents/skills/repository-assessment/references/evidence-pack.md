@@ -13,6 +13,12 @@ Return only information another agent needs to continue:
 - Tests and validation commands
 - Architecture or requirements artifacts
 
+## Lifecycle and abstraction
+
+- Current product, requirements, design, architecture, implementation, and verification state
+- Explicit approvals and pending gates
+- Relevant requirement, decision, C4, implementation, and test identifiers
+
 ## Execution path
 
 - Ordered flow through relevant files and symbols

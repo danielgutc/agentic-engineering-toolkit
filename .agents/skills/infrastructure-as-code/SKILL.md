@@ -9,13 +9,13 @@ Treat infrastructure changes as reviewed, testable software with operational con
 
 ## Workflow
 
-1. Identify the target environment, provider, state model, ownership boundary, and applicable constraints.
-2. Inspect existing modules, naming conventions, identity design, and deployment workflow.
-3. Define desired state, dependencies, migration path, and rollback strategy.
-4. Make the smallest declarative change that fits the established design.
-5. Validate formatting, syntax, static checks, and a plan or dry run when safely available.
-6. Inspect the proposed delta for replacement, deletion, privilege, cost, and exposure risks.
-7. Report validation evidence and approvals required before apply or deployment.
+1. Identify the traced container or operational requirement, target environment, provider, state model, ownership boundary, and constraints.
+2. Inspect existing modules, naming conventions, identity design, policy checks, and deployment workflow.
+3. Define desired state, dependencies, migration sequence, rollback strategy, and drift expectations.
+4. Make the smallest declarative change that fits the approved topology and supports safe evolution.
+5. Validate formatting, syntax, static checks, policy tests, and a plan or dry run when safely available.
+6. Inspect the proposed delta for replacement, deletion, privilege, cost, availability, and exposure risks.
+7. Report validation evidence, rollout and rollback conditions, and approvals required before apply or deployment.
 
 ## Boundaries
 
