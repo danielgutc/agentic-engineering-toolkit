@@ -25,3 +25,4 @@ Express approved architecture at the smallest C4 level needed by the audience.
 - Do not equate bounded contexts, repositories, deployment units, and microservices without an explicit design decision.
 - Keep transient task plans outside enduring C4 documentation.
 - Follow the repository's selected diagram source format and naming conventions.
+- If code-level views are generated from source, regenerate and validate them instead of manually editing their output.
