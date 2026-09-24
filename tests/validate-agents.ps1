@@ -12,42 +12,42 @@ $expectedAgents = [ordered]@{
         Model = 'gpt-5.6-sol'
         ReasoningEffort = 'medium'
         Sandbox = 'workspace-write'
-        Skills = @('repository-assessment', 'product-discovery', 'requirements-specification', 'domain-modeling')
+        Skills = @('role-collaboration', 'repository-assessment', 'product-discovery', 'requirements-specification', 'domain-modeling')
     }
     'solutions-architect.toml' = @{
         Name = 'solutions_architect'
         Model = 'gpt-5.6-sol'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
-        Skills = @('repository-assessment', 'solution-architecture', 'domain-modeling', 'architecture-decision', 'c4-modeling')
+        Skills = @('role-collaboration', 'repository-assessment', 'solution-architecture', 'domain-modeling', 'architecture-decision', 'c4-modeling')
     }
     'technical-architect.toml' = @{
         Name = 'technical_architect'
         Model = 'gpt-5.6-sol'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
-        Skills = @('repository-assessment', 'technical-design', 'domain-modeling', 'architecture-decision', 'c4-modeling', 'test-driven-development')
+        Skills = @('role-collaboration', 'repository-assessment', 'technical-design', 'domain-modeling', 'architecture-decision', 'c4-modeling', 'test-driven-development')
     }
     'software-engineer.toml' = @{
         Name = 'software_engineer'
         Model = 'gpt-5.6-terra'
         ReasoningEffort = 'medium'
         Sandbox = 'workspace-write'
-        Skills = @('repository-assessment', 'test-driven-development', 'code-review')
+        Skills = @('role-collaboration', 'repository-assessment', 'test-driven-development', 'code-review')
     }
     'infrastructure-engineer.toml' = @{
         Name = 'infrastructure_engineer'
         Model = 'gpt-5.6-terra'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
-        Skills = @('repository-assessment', 'architecture-decision', 'infrastructure-as-code', 'ci-cd-design')
+        Skills = @('role-collaboration', 'repository-assessment', 'architecture-decision', 'infrastructure-as-code', 'ci-cd-design')
     }
     'test-engineer.toml' = @{
         Name = 'test_engineer'
         Model = 'gpt-5.6-luna'
         ReasoningEffort = 'medium'
         Sandbox = 'workspace-write'
-        Skills = @('repository-assessment', 'integration-e2e-testing', 'code-review')
+        Skills = @('role-collaboration', 'repository-assessment', 'integration-e2e-testing', 'code-review')
     }
 }
 

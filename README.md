@@ -13,7 +13,7 @@ The toolkit separates three concerns:
 ```text
 .codex/agents/       Native Codex custom-agent definitions
 .agents/skills/      Portable, progressively loaded skills
-install/             Symlink management for user-level installation
+install/             Unified user-level copy management
 tests/               Dependency-free structural validation
 ```
 
@@ -30,6 +30,8 @@ tests/               Dependency-free structural validation
 
 The default ownership flow is `product_owner -> solutions_architect -> technical_architect -> software_engineer/infrastructure_engineer -> test_engineer`. Each role stays at its assigned abstraction level, follows project approval gates, and returns consequential changes to the appropriate owner rather than silently widening scope.
 
+Cross-role consultation uses a coordinator-routed conversation tree. Every exchange remains 1:1, but a specialist can return `clarification_needed` to continue a short conversation with its requester or `consultation_needed` to create a nested request to another role. The coordinator routes and resumes all threads, then unwinds answers to the originating role. Chains default to two nested levels and two clarification round trips; specialists never contact each other directly or treat consultation as lifecycle approval.
+
 Custom agents contain reusable engineering lifecycle rules but no project-specific architecture. They inherit applicable project instructions and route repeatable work to relevant skills.
 
 ## Skills
@@ -38,6 +40,7 @@ Skills are independent capabilities rather than agent personas. A skill may be u
 
 | Lifecycle area | Skills |
 | --- | --- |
+| Collaboration | `role-collaboration` |
 | Orientation | `repository-assessment` |
 | Product and specification | `product-discovery`, `requirements-specification` |
 | Domain and solution | `domain-modeling`, `solution-architecture`, `architecture-decision`, `c4-modeling` |
@@ -54,15 +57,15 @@ Codex discovers user-level skills under `~/.agents/skills` and user-level custom
 Run the installer from PowerShell:
 
 ```powershell
-./install/link.ps1
+./install/copy.ps1
 ```
 
-The installer creates individual symbolic links from the user-level Codex locations to this checkout. It never copies files and never replaces an existing file or directory.
+The installer copies agent TOML files into `~/.codex/agents` and complete skill directories into `~/.agents/skills`. One copy workflow is used for every managed artifact. The script is idempotent and refuses to replace a differing destination unless `-Force` is supplied explicitly.
 
 The scripts normally resolve the current Windows profile automatically. Automation running under another account can select the intended profile explicitly:
 
 ```powershell
-./install/link.ps1 -UserHome C:\Users\danig
+./install/copy.ps1 -UserHome C:\Users\danig
 ```
 
 Inspect installation state without changing it:
@@ -71,13 +74,11 @@ Inspect installation state without changing it:
 ./install/status.ps1 -UserHome C:\Users\danig
 ```
 
-Remove only links managed by this checkout:
+Remove only unchanged copies managed by this checkout:
 
 ```powershell
 ./install/unlink.ps1 -UserHome C:\Users\danig
 ```
-
-Windows may require Developer Mode or an elevated shell to create symbolic links.
 
 ## Validate
 

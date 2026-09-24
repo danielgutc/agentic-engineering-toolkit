@@ -11,7 +11,7 @@ $ErrorActionPreference = 'Stop'
 $results = foreach ($link in Get-ToolkitLinks -InstallDirectory $PSScriptRoot -UserHome $UserHome) {
     [PSCustomObject]@{
         Name = $link.Name
-        State = Get-ToolkitLinkState -Link $link
+        State = Get-ToolkitCopyState -Link $link
         Target = $link.Target
         Source = $link.Source
     }
@@ -19,6 +19,6 @@ $results = foreach ($link in Get-ToolkitLinks -InstallDirectory $PSScriptRoot -U
 
 $results | Format-Table -AutoSize
 
-if ($results.State -contains 'Conflict' -or $results.State -contains 'WrongTarget' -or $results.State -contains 'MissingSource' -or $results.State -contains 'LinkedSourceMissing') {
+if ($results.State -contains 'Conflict' -or $results.State -contains 'WrongTarget' -or $results.State -contains 'MissingSource' -or $results.State -contains 'LinkedSourceMissing' -or $results.State -contains 'Outdated') {
     exit 1
 }

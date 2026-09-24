@@ -10,7 +10,7 @@
 
 - Store native Codex agents in `.codex/agents/`.
 - Store portable skills in `.agents/skills/<skill-name>/SKILL.md`.
-- Store symlink management in `install/`.
+- Store user-level copy management in `install/`.
 - Store structural validation in `tests/`.
 
 ## Agent rules
@@ -36,9 +36,9 @@
 
 ## Installation rules
 
-- Install agents and skills using individual symbolic links.
-- Never replace or delete an existing non-link target.
-- Never copy managed artifacts as an installation fallback.
+- Install agents and skills as regular files and directories copied into their user-level locations.
+- Never replace a differing managed copy unless the caller explicitly uses `-Force`.
+- Never replace or delete an unrelated target.
 - Keep personal instruction files outside this repository.
 
 ## Verification

@@ -70,4 +70,4 @@ if ($errors.Count -gt 0) {
     throw "Link manifest validation failed:`n- $($errors -join "`n- ")"
 }
 
-Write-Host "Validated $($manifest.links.Count) link definitions."
+Write-Host "Validated $($manifest.links.Count) installation definitions."

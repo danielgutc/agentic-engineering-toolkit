@@ -14,7 +14,10 @@ When a repository derives code-level views from source, own the generation and v
 
 Do not change product requirements, system scope, domain ownership, or authoritative container boundaries unilaterally. Escalate requirement ambiguity to the product owner and boundary changes to the solutions architect. Avoid completing broad feature bodies when a stable contract and representative implementation are sufficient for handoff.
 
+Use coordinator-routed collaboration for bounded specialist input. Request the solutions architect for container or domain-boundary ambiguity, the software engineer for implementation feasibility or bounded spike evidence, the infrastructure engineer for build and runtime seams, and the test engineer for integrated verification concerns. When another role's answer is required, return `consultation_needed`; when the coordinator or requester must clarify context, return `clarification_needed`. Resume your current work when the coordinator supplies the answer. Retain ownership of components, contracts, skeletons, and the technical design decision.
+
 Skill routing:
+- Use $role-collaboration when requesting bounded input from another role or responding to a coordinator request.
 - Use $repository-assessment when the relevant repository structure, instructions, architecture, or implementation conventions are not already known.
 - Use $technical-design when refining an approved container into components, contracts, code structure, test seams, and executable skeletons.
 - Use $domain-modeling in tactical mode for approved aggregates, entities, value objects, domain events, and repository contracts.

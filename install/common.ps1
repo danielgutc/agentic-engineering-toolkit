@@ -119,3 +119,70 @@ function Get-ToolkitLinkState {
 
     return 'Linked'
 }
+
+function Get-ToolkitDirectoryFingerprint {
+    param(
+        [Parameter(Mandatory)]
+        [string] $Path
+    )
+
+    $root = Get-NormalizedPath -Path $Path
+    foreach ($item in Get-ChildItem -LiteralPath $root -Recurse -Force | Sort-Object FullName) {
+        $relativePath = [System.IO.Path]::GetRelativePath($root, $item.FullName).Replace('\', '/')
+        if ($item.PSIsContainer) {
+            "D|$relativePath"
+        }
+        else {
+            $hash = (Get-FileHash -LiteralPath $item.FullName -Algorithm SHA256).Hash
+            "F|$relativePath|$hash"
+        }
+    }
+}
+
+function Get-ToolkitCopyState {
+    param(
+        [Parameter(Mandatory)]
+        [PSCustomObject] $Link
+    )
+
+    $sourceType = if ($Link.Kind -eq 'directory') { 'Container' } else { 'Leaf' }
+    if (-not (Test-Path -LiteralPath $Link.Source -PathType $sourceType)) {
+        return 'MissingSource'
+    }
+
+    $targetItem = Get-Item -LiteralPath $Link.Target -Force -ErrorAction SilentlyContinue
+    if ($null -eq $targetItem) {
+        return 'NotInstalled'
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace([string] $targetItem.LinkType)) {
+        $destination = Get-LinkDestination -Item $targetItem
+        if ($null -ne $destination -and (Test-PathEqual -Left $destination -Right $Link.Source)) {
+            return 'NeedsCopy'
+        }
+
+        return 'WrongTarget'
+    }
+
+    if (($Link.Kind -eq 'file' -and $targetItem.PSIsContainer) -or ($Link.Kind -eq 'directory' -and -not $targetItem.PSIsContainer)) {
+        return 'Conflict'
+    }
+
+    if ($Link.Kind -eq 'directory') {
+        $sourceFingerprint = @(Get-ToolkitDirectoryFingerprint -Path $Link.Source)
+        $targetFingerprint = @(Get-ToolkitDirectoryFingerprint -Path $Link.Target)
+        if ($sourceFingerprint.Count -eq $targetFingerprint.Count -and ($sourceFingerprint -join "`n") -ceq ($targetFingerprint -join "`n")) {
+            return 'Copied'
+        }
+
+        return 'Outdated'
+    }
+
+    $sourceHash = (Get-FileHash -LiteralPath $Link.Source -Algorithm SHA256).Hash
+    $targetHash = (Get-FileHash -LiteralPath $Link.Target -Algorithm SHA256).Hash
+    if ($sourceHash -ceq $targetHash) {
+        return 'Copied'
+    }
+
+    return 'Outdated'
+}
