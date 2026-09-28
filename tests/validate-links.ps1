@@ -50,6 +50,10 @@ foreach ($agent in Get-ChildItem -LiteralPath (Join-Path $repositoryRoot '.codex
     $expectedSources.Add(".codex/agents/$($agent.Name)")
 }
 
+foreach ($agent in Get-ChildItem -LiteralPath (Join-Path $repositoryRoot '.github/agents') -File -Filter '*.agent.md') {
+    $expectedSources.Add(".github/agents/$($agent.Name)")
+}
+
 foreach ($skill in Get-ChildItem -LiteralPath (Join-Path $repositoryRoot '.agents/skills') -Directory) {
     $expectedSources.Add(".agents/skills/$($skill.Name)")
 }

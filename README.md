@@ -1,6 +1,6 @@
 # Agentic Engineering Toolkit
 
-Reusable Codex agents and task-oriented skills for software engineering work.
+Reusable Codex and GitHub Copilot agents with task-oriented skills for software engineering work.
 
 The toolkit separates three concerns:
 
@@ -12,9 +12,11 @@ The toolkit separates three concerns:
 
 ```text
 .codex/agents/       Native Codex custom-agent definitions
+.github/agents/      Generated GitHub Copilot custom-agent profiles
 .agents/skills/      Portable, progressively loaded skills
 install/             Unified user-level copy management
 tests/               Dependency-free structural validation
+tools/               Agent synchronization tooling
 ```
 
 ## Agents
@@ -33,6 +35,8 @@ The default ownership flow is `product_owner -> solutions_architect -> technical
 Cross-role consultation uses a coordinator-routed conversation tree. Every exchange remains 1:1, but a specialist can return `clarification_needed` to continue a short conversation with its requester or `consultation_needed` to create a nested request to another role. The coordinator routes and resumes all threads, then unwinds answers to the originating role. Chains default to two nested levels and two clarification round trips; specialists never contact each other directly or treat consultation as lifecycle approval.
 
 Custom agents contain reusable engineering lifecycle rules but no project-specific architecture. They inherit applicable project instructions and route repeatable work to relevant skills.
+
+Codex TOML files are canonical. Run `./tools/sync-copilot-agents.ps1` after changing them; the generated Copilot profiles preserve the role instructions and reasoning effort, inherit an available Copilot model, and record the canonical Codex model as metadata. `./tests/run.ps1` fails when either format is missing or out of sync.
 
 ## Skills
 
@@ -60,7 +64,7 @@ Run the installer from PowerShell:
 ./install/copy.ps1
 ```
 
-The installer copies agent TOML files into `~/.codex/agents` and complete skill directories into `~/.agents/skills`. One copy workflow is used for every managed artifact. The script is idempotent and refuses to replace a differing destination unless `-Force` is supplied explicitly.
+The installer copies Codex agent TOML files into `~/.codex/agents`, Copilot agent profiles into `~/.copilot/agents`, and complete skill directories into `~/.agents/skills`. One copy workflow is used for every managed artifact. The script is idempotent and refuses to replace a differing destination unless `-Force` is supplied explicitly.
 
 The scripts normally resolve the current Windows profile automatically. Automation running under another account can select the intended profile explicitly:
 

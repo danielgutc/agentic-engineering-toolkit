@@ -37,6 +37,42 @@
       "target": ".codex/agents/test-engineer.toml"
     },
     {
+      "name": "Copilot product owner agent",
+      "kind": "file",
+      "source": ".github/agents/product-owner.agent.md",
+      "target": ".copilot/agents/product-owner.agent.md"
+    },
+    {
+      "name": "Copilot solutions architect agent",
+      "kind": "file",
+      "source": ".github/agents/solutions-architect.agent.md",
+      "target": ".copilot/agents/solutions-architect.agent.md"
+    },
+    {
+      "name": "Copilot technical architect agent",
+      "kind": "file",
+      "source": ".github/agents/technical-architect.agent.md",
+      "target": ".copilot/agents/technical-architect.agent.md"
+    },
+    {
+      "name": "Copilot software engineer agent",
+      "kind": "file",
+      "source": ".github/agents/software-engineer.agent.md",
+      "target": ".copilot/agents/software-engineer.agent.md"
+    },
+    {
+      "name": "Copilot infrastructure engineer agent",
+      "kind": "file",
+      "source": ".github/agents/infrastructure-engineer.agent.md",
+      "target": ".copilot/agents/infrastructure-engineer.agent.md"
+    },
+    {
+      "name": "Copilot test engineer agent",
+      "kind": "file",
+      "source": ".github/agents/test-engineer.agent.md",
+      "target": ".copilot/agents/test-engineer.agent.md"
+    },
+    {
       "name": "role collaboration skill",
       "kind": "directory",
       "source": ".agents/skills/role-collaboration",
