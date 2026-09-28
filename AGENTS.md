@@ -2,13 +2,14 @@
 
 ## Purpose
 
-- Maintain this repository as a reusable, project-neutral Codex toolkit.
+- Maintain this repository as a reusable, project-neutral Codex and GitHub Copilot toolkit.
 - Keep agent roles separate from task-oriented skills.
 - Encode reusable blueprint principles while keeping project-specific lifecycle rules and architecture in each consuming repository.
 
 ## Repository model
 
 - Store native Codex agents in `.codex/agents/`.
+- Store generated GitHub Copilot agent clones in `.github/agents/`.
 - Store portable skills in `.agents/skills/<skill-name>/SKILL.md`.
 - Store user-level copy management in `install/`.
 - Store structural validation in `tests/`.
@@ -16,6 +17,9 @@
 ## Agent rules
 
 - Give each agent one standard engineering role with explicit boundaries.
+- Treat `.codex/agents/*.toml` as the canonical agent definitions and `.github/agents/*.agent.md` as generated Copilot clones.
+- Keep every Codex and Copilot agent synchronized. After changing a canonical agent, run `./tools/sync-copilot-agents.ps1` and commit both formats together.
+- Never edit a generated Copilot agent directly; update its canonical Codex TOML and regenerate it.
 - Maintain the canonical flow from product owner to solutions architect, technical architect, software and infrastructure engineers, and test engineer.
 - Preserve abstraction levels and artifact ownership; return scope changes to the role that owns the affected decision.
 - Use Sol for product and architecture reasoning, Terra for implementation and infrastructure, and Luna for bounded integrated-system verification.
@@ -43,5 +47,5 @@
 
 ## Verification
 
-- Run `./tests/run.ps1` after changing agents, skills, or the link manifest.
+- Run `./tests/run.ps1` after changing agents, skills, synchronization tooling, or the installation manifest.
 - Keep validation dependency-free and compatible with PowerShell 7.
