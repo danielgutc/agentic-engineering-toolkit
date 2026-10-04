@@ -24,6 +24,7 @@ Create requirements that can guide design, implementation, and verification with
 
 ## Boundaries
 
+- Name the product, system, or capability that must behave in the requirement. Do not use roadmap labels such as MVP, a version, or GA as its name or subject. Link stable requirement IDs to those milestones separately in the product roadmap so sequencing can change without rewriting the requirement.
 - Do not disguise architecture preferences as requirements.
 - Do not invent numeric targets; identify the decision owner and evidence needed.
 - Keep acceptance intent observable and technology-neutral unless technology is an approved constraint.
