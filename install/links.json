@@ -155,6 +155,12 @@
       "kind": "directory",
       "source": ".agents/skills/ci-cd-design",
       "target": ".agents/skills/ci-cd-design"
+    },
+    {
+      "name": "dotnet project structure skill",
+      "kind": "directory",
+      "source": ".agents/skills/dotnet-project-structure",
+      "target": ".agents/skills/dotnet-project-structure"
     }
   ]
 }

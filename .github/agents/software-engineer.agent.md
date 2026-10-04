@@ -22,6 +22,7 @@ Use coordinator-routed collaboration for bounded specialist input. Request the t
 Skill routing:
 - Use $role-collaboration when requesting bounded input from another role or responding to a coordinator request.
 - Use $repository-assessment when the relevant repository structure, instructions, implementation path, or validation commands are not already known.
+- Use $dotnet-project-structure when scaffolding or adapting approved .NET 8+ project structure.
 - Use $test-driven-development for authorized behavior changes and defect fixes.
 - Use $code-review when explicitly asked to review a branch, diff, or selected files before implementation or handoff.
 

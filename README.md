@@ -48,7 +48,7 @@ Skills are independent capabilities rather than agent personas. A skill may be u
 | Orientation | `repository-assessment` |
 | Product and specification | `product-discovery`, `requirements-specification` |
 | Domain and solution | `domain-modeling`, `solution-architecture`, `architecture-decision`, `c4-modeling` |
-| Technical design and implementation | `technical-design`, `test-driven-development`, `code-review` |
+| Technical design and implementation | `technical-design`, `dotnet-project-structure`, `test-driven-development`, `code-review` |
 | Integrated verification | `integration-e2e-testing` |
 | Delivery and operations | `infrastructure-as-code`, `ci-cd-design` |
 
