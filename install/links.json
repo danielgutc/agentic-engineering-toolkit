@@ -1,6 +1,12 @@
 {
   "links": [
     {
+      "name": "Codex agent routing instructions",
+      "kind": "file",
+      "source": "AGENTS.md",
+      "target": ".codex/AGENTS.md"
+    },
+    {
       "name": "product owner agent",
       "kind": "file",
       "source": ".codex/agents/product-owner.toml",
