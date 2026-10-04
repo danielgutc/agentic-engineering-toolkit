@@ -1,51 +1,28 @@
-# Agent Instructions
+# Engineering Agent Routing
 
-## Purpose
+These instructions apply when the matching custom agents are available. Codex is the coordinator: infer the engineering role from the user's request and select the corresponding agent without requiring the user to name or tag it. Use the agent's `name` as `agent_type` when spawning it. Keep the main chat responsible for the user-facing answer, decisions, and phase approvals.
 
-- Maintain this repository as a reusable, project-neutral Codex and GitHub Copilot toolkit.
-- Keep agent roles separate from task-oriented skills.
-- Encode reusable blueprint principles while keeping project-specific lifecycle rules and architecture in each consuming repository.
+## Select the role
 
-## Repository model
+| Request or question primarily concerns | Custom agent |
+| --- | --- |
+| Product problem, users, UX, MVP scope, priorities, requirements, or acceptance intent | `product_owner` |
+| System scope, quality attributes, domain or service boundaries, integrations, C4 context or containers, or consequential architecture choices | `solutions_architect` |
+| Components, interfaces, contracts, code structure, skeletons, test seams, or engineering tool choices inside an approved container | `technical_architect` |
+| Implementing or fixing application behavior and developer-level tests within approved contracts | `software_engineer` |
+| Build, CI/CD, environments, infrastructure, deployment, observability, or operations | `infrastructure_engineer` |
+| Independent code review, integration or end-to-end tests, acceptance verification, regression evidence, or a test verdict | `test_engineer` |
 
-- Store native Codex agents in `.codex/agents/`.
-- Store generated GitHub Copilot agent clones in `.github/agents/`.
-- Store portable skills in `.agents/skills/<skill-name>/SKILL.md`.
-- Store user-level copy management in `install/`.
-- Store structural validation in `tests/`.
+Choose by the decision the request needs, not by a keyword alone. When a request spans roles, identify the current phase and its owner first. Ask one specialist at a time for dependent decisions; use parallel agents only for independent, bounded work. Pass the relevant repository instructions, approved artifacts, constraints, and expected output to each agent. Keep each role within its ownership boundary and route a scope change back to the role that owns it.
 
-## Agent rules
+For a substantial role-owned question or task, delegate to the selected custom agent even if the user did not request delegation explicitly. For a brief factual answer, routine file lookup, or non-engineering request, handle it in the main chat unless a specialist's judgment is needed. If a custom agent is unavailable, do the work in the main chat and state that limitation rather than substituting a different role silently.
 
-- Give each agent one standard engineering role with explicit boundaries.
-- Treat `.codex/agents/*.toml` as the canonical agent definitions and `.github/agents/*.agent.md` as generated Copilot clones.
-- Keep every Codex and Copilot agent synchronized. After changing a canonical agent, run `./tools/sync-copilot-agents.ps1` and commit both formats together.
-- Never edit a generated Copilot agent directly; update its canonical Codex TOML and regenerate it.
-- Maintain the canonical flow from product owner to solutions architect, technical architect, software and infrastructure engineers, and test engineer.
-- Preserve abstraction levels and artifact ownership; return scope changes to the role that owns the affected decision.
-- Use Sol for product and architecture reasoning, Terra for implementation and infrastructure, and Luna for bounded integrated-system verification.
-- Apply specification-driven development, C4, DDD, TDD, DevOps, and evolutive architecture only in the roles and lifecycle stages where they belong.
-- Keep agent instructions concise and independent of a specific repository or technology stack.
-- Grant workspace write access only because each canonical role owns enduring artifacts, implementation, infrastructure, or tests; instructions must still constrain what it may change.
-- Route agents only to skills that exist in this repository.
-- Require concise handoffs containing conclusions, evidence, validation, and unresolved risks.
+## Phase flow and approvals
 
-## Skill rules
+The default flow is `product_owner` -> `solutions_architect` -> `technical_architect` -> `software_engineer` and/or `infrastructure_engineer` -> `test_engineer`. Start at the earliest phase needed by the request and reuse already approved work. Do not force a full lifecycle for a bounded fix or question.
 
-- Model a skill as a reusable procedure, not a persona.
-- Give each skill a narrow trigger description and a self-contained workflow.
-- Align skills with lifecycle outcomes and abstraction levels rather than duplicating an agent's full role.
-- Keep shared entrypoints compact and load strategic, tactical, or technology-specific references only when needed.
-- Put optional detail in `references/`, reusable output material in `assets/`, and automation in `scripts/`.
-- Do not duplicate project templates or project-specific instructions in global skills.
+Complete and present the current phase's reviewable outcome, evidence, validation, and unresolved risks. Seek the user's approval before starting the next phase. A specialist's answer is evidence, not user approval. Continue work within an already approved phase without repeatedly asking permission. Honor any stricter project-specific approval gate.
 
-## Installation rules
+Use pyramidal reasoning in summaries: lead with the conclusion, then the supporting evidence and details. Work from appropriate abstractions toward implementation, delay consequential choices until evidence supports them, and keep product, architecture, delivery, and verification concerns at their respective levels. Apply design thinking, MVP, and UX reasoning for product work; C4 and domain-driven design for architecture; patterns and TDD for technical design and implementation; and DevOps and evolutive architecture for delivery work when relevant. Treat microservices as an option that requires evidence, not a default.
 
-- Install agents and skills as regular files and directories copied into their user-level locations.
-- Never replace a differing managed copy unless the caller explicitly uses `-Force`.
-- Never replace or delete an unrelated target.
-- Keep personal instruction files outside this repository.
-
-## Verification
-
-- Run `./tests/run.ps1` after changing agents, skills, synchronization tooling, or the installation manifest.
-- Keep validation dependency-free and compatible with PowerShell 7.
+Each handoff should contain the conclusion, artifact or file references, validation performed, unresolved risks, and the next decision owner. The main chat integrates specialist results and answers the user directly.

@@ -55,6 +55,8 @@ $errors = [System.Collections.Generic.List[string]]::new()
 $actualFiles = @(Get-ChildItem -LiteralPath $agentDirectory -File -Filter '*.toml')
 $skillDirectory = Join-Path $repositoryRoot '.agents/skills'
 $knownSkills = @(Get-ChildItem -LiteralPath $skillDirectory -Directory | Select-Object -ExpandProperty Name)
+$routingPath = Join-Path $repositoryRoot 'AGENTS.md'
+$routingInstructions = Get-Content -LiteralPath $routingPath -Raw
 
 foreach ($file in $actualFiles) {
     if (-not $expectedAgents.Contains($file.Name)) {
@@ -70,6 +72,9 @@ foreach ($entry in $expectedAgents.GetEnumerator()) {
     }
 
     $content = Get-Content -LiteralPath $path -Raw
+    if ($routingInstructions -notmatch ('`' + [regex]::Escape($entry.Value.Name) + '`')) {
+        $errors.Add("AGENTS.md does not route to '$($entry.Value.Name)'.")
+    }
     $expectedName = [regex]::Escape($entry.Value.Name)
     $expectedModel = [regex]::Escape($entry.Value.Model)
     $expectedReasoningEffort = [regex]::Escape($entry.Value.ReasoningEffort)
