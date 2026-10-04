@@ -26,14 +26,14 @@ $expectedAgents = [ordered]@{
         Model = 'gpt-5.6-sol'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
-        Skills = @('role-collaboration', 'repository-assessment', 'technical-design', 'domain-modeling', 'architecture-decision', 'c4-modeling', 'test-driven-development')
+        Skills = @('role-collaboration', 'repository-assessment', 'technical-design', 'dotnet-project-structure', 'domain-modeling', 'architecture-decision', 'c4-modeling', 'test-driven-development')
     }
     'software-engineer.toml' = @{
         Name = 'software_engineer'
         Model = 'gpt-5.6-terra'
         ReasoningEffort = 'medium'
         Sandbox = 'workspace-write'
-        Skills = @('role-collaboration', 'repository-assessment', 'test-driven-development', 'code-review')
+        Skills = @('role-collaboration', 'repository-assessment', 'dotnet-project-structure', 'test-driven-development', 'code-review')
     }
     'infrastructure-engineer.toml' = @{
         Name = 'infrastructure_engineer'

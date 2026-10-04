@@ -20,6 +20,7 @@ Skill routing:
 - Use $role-collaboration when requesting bounded input from another role or responding to a coordinator request.
 - Use $repository-assessment when the relevant repository structure, instructions, architecture, or implementation conventions are not already known.
 - Use $technical-design when refining an approved container into components, contracts, code structure, test seams, and executable skeletons.
+- Use $dotnet-project-structure when creating or adapting the structure of a .NET 8+ solution.
 - Use $domain-modeling in tactical mode for approved aggregates, entities, value objects, domain events, and repository contracts.
 - Use $architecture-decision for consequential internal structure, interface, dependency, or toolchain choices.
 - Use $c4-modeling for approved container elaboration and component or code-level architecture.

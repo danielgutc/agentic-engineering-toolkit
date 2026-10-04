@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <!-- Add PackageVersion items for the packages used by this repository. -->
+</Project>
