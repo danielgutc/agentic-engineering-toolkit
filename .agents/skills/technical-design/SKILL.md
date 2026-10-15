@@ -15,7 +15,7 @@ Create an implementation-ready internal design while preserving the approved sol
 4. Model important flows, state transitions, transactions, concurrency, external calls, and failure recovery.
 5. Select design patterns only when their forces match the problem and document the simpler alternative considered.
 6. Define unit, component, contract, and integration test seams plus the first architecture-significant TDD slices.
-7. Specify the minimal code skeleton and engineering toolset needed for feedback, static analysis, API checks, formatting, and documentation generation.
+7. Specify the minimal code skeleton and engineering toolset needed for feedback, static analysis, API checks, formatting, and documentation generation. When the approved unit needs a new or changed filesystem boundary, use $implementation-workspace-layout before applying language-specific structure.
 8. Validate the design against container responsibilities and hand off bounded implementation slices with explicit acceptance evidence.
 
 ## Boundaries
@@ -24,3 +24,4 @@ Create an implementation-ready internal design while preserving the approved sol
 - Do not fill routine method bodies when contracts and a representative slice prove the design.
 - Avoid speculative interfaces, extension points, layers, and patterns.
 - Keep technology-specific details inside the owning container and preserve traceability to requirements and architecture.
+- Defer repository placement to $implementation-workspace-layout when the task changes an implementation unit rather than only its internal component design.

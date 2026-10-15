@@ -1,2 +1,2 @@
-# .NET SDK artifacts output (relative to the repository root)
+# .NET SDK artifacts output (relative to this implementation workspace)
 /artifacts/
