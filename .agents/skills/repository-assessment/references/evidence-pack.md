@@ -9,8 +9,9 @@ Return only information another agent needs to continue:
 
 ## Relevant structure
 
-- Entry points and owning modules
-- Tests and validation commands
+- Repository-level entry points, orchestration, and cross-workspace tests
+- Relevant implementation workspaces, their owning boundaries, and their projects, packages, or customization assets
+- Workspace-scoped toolchain files, generated output, and developer validation commands
 - Architecture or requirements artifacts
 
 ## Lifecycle and abstraction
@@ -22,6 +23,7 @@ Return only information another agent needs to continue:
 ## Execution path
 
 - Ordered flow through relevant files and symbols
+- Working-directory or discovery assumptions used by build, test, package, and CI commands
 
 ## Evidence
 

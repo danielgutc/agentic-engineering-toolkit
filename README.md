@@ -49,7 +49,7 @@ Skills are independent capabilities rather than agent personas. A skill may be u
 | Lifecycle area | Skills |
 | --- | --- |
 | Collaboration | `role-collaboration` |
-| Orientation | `repository-assessment` |
+| Orientation and workspace layout | `repository-assessment`, `implementation-workspace-layout` |
 | Product and specification | `product-discovery`, `requirements-specification` |
 | Domain and solution | `domain-modeling`, `solution-architecture`, `architecture-decision`, `c4-modeling` |
 | Technical design and implementation | `technical-design`, `dotnet-project-structure`, `test-driven-development`, `code-review` |
@@ -57,6 +57,8 @@ Skills are independent capabilities rather than agent personas. A skill may be u
 | Delivery and operations | `infrastructure-as-code`, `ci-cd-design` |
 
 Skill entrypoints stay focused. Conditional detail, such as strategic versus tactical domain-driven design, is loaded from references only when the task needs it.
+
+An implementation workspace is an approved unit's owned build, test, documentation, toolchain, and generated-output boundary. It can contain several language projects or packages. Repositories may have one workspace or several independent sibling workspaces, including non-code units such as customized images or database schemas. The workspace skill does not create architecture boundaries; technology-specific skills, such as `dotnet-project-structure`, refine the structure inside an already known workspace.
 
 Codex discovers user-level skills under `~/.agents/skills` and user-level custom agents under `~/.codex/agents`.
 

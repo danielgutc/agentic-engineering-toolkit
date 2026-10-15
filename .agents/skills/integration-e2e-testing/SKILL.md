@@ -11,7 +11,7 @@ Produce independent evidence that approved behavior works across component, proc
 
 1. Map requirement identifiers, acceptance intent, interfaces, and risks to observable integrated scenarios.
 2. Choose the lowest test level that exercises the real risk: integration, contract, end-to-end, or acceptance.
-3. Define environment, identity, service, data, fixture, isolation, cleanup, and observability needs before automating.
+3. Define environment, identity, service, data, fixture, isolation, cleanup, and observability needs before automating. Place unit-owned tests with their implementation workspace and keep tests spanning several workspaces or the assembled system at the established repository level.
 4. Implement deterministic scenarios with explicit preconditions, actions, outcomes, and diagnostic evidence.
 5. Use Robot Framework or a comparable project-approved tool when it improves readable cross-system or user-journey automation.
 6. Run the narrow scenario first, then the relevant regression set, preserving logs and evidence needed to reproduce failures.
@@ -24,3 +24,4 @@ Produce independent evidence that approved behavior works across component, proc
 - Do not mask flakiness with retries until the source and retry semantics are understood.
 - Do not use full end-to-end tests when a stable contract or integration test gives better feedback.
 - Do not mutate production systems or shared environments without explicit authorization.
+- Use $implementation-workspace-layout only when verification work must create or change test-placement boundaries; otherwise preserve the established layout.
