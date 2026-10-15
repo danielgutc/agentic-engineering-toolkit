@@ -9,6 +9,8 @@
 ## Repository model
 
 - Store native Codex agents in `.codex/agents/`.
+- Store reusable Codex agent-routing instructions in `.codex/AGENTS.md`.
+- Store repository-specific maintenance instructions in the root `AGENTS.md`.
 - Store generated GitHub Copilot agent clones in `.github/agents/`.
 - Store portable skills in `.agents/skills/<skill-name>/SKILL.md`.
 - Store user-level copy management in `install/`.
@@ -41,6 +43,7 @@
 ## Installation rules
 
 - Install agents, skills, and routing instructions as regular files and directories copied into their user-level locations.
+- Copy `.codex/AGENTS.md` to `~/.codex/AGENTS.md`; keep repository maintenance guidance in the root `AGENTS.md` and out of the user-level installation.
 - Never replace a differing managed copy unless the caller explicitly uses `-Force`.
 - Never replace or delete an unrelated target.
 - Keep personal instruction files outside this repository.

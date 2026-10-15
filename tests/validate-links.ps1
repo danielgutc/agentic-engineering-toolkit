@@ -46,13 +46,17 @@ foreach ($link in $manifest.links) {
 }
 
 $expectedSources = [System.Collections.Generic.List[string]]::new()
-$expectedSources.Add('AGENTS.md')
+$expectedSources.Add('.codex/AGENTS.md')
 
 $routingEntry = @($manifest.links | Where-Object {
-    ([string] $_.source).Replace('\', '/') -eq 'AGENTS.md'
+    ([string] $_.source).Replace('\', '/') -eq '.codex/AGENTS.md'
 })
 if ($routingEntry.Count -ne 1 -or ([string] $routingEntry[0].target).Replace('\', '/') -ne '.codex/AGENTS.md' -or $routingEntry[0].kind -ne 'file') {
-    $errors.Add('AGENTS.md must be installed as a file at .codex/AGENTS.md.')
+    $errors.Add('.codex/AGENTS.md must be installed as a file at .codex/AGENTS.md.')
+}
+
+if (-not (Test-Path -LiteralPath (Join-Path $repositoryRoot 'AGENTS.md') -PathType Leaf)) {
+    $errors.Add('Repository-specific AGENTS.md is missing from the repository root.')
 }
 
 foreach ($agent in Get-ChildItem -LiteralPath (Join-Path $repositoryRoot '.codex/agents') -File -Filter '*.toml') {

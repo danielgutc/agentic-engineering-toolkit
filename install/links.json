@@ -3,7 +3,7 @@
     {
       "name": "Codex agent routing instructions",
       "kind": "file",
-      "source": "AGENTS.md",
+      "source": ".codex/AGENTS.md",
       "target": ".codex/AGENTS.md"
     },
     {

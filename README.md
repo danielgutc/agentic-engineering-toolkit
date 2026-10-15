@@ -11,7 +11,8 @@ The toolkit separates three concerns:
 ## Repository layout
 
 ```text
-AGENTS.md            Global Codex routing instructions (copied to ~/.codex/AGENTS.md)
+AGENTS.md            Repository-specific maintenance instructions
+.codex/AGENTS.md     Global Codex agent-routing instructions (copied to ~/.codex/AGENTS.md)
 .codex/agents/       Native Codex custom-agent definitions
 .github/agents/      Generated GitHub Copilot custom-agent profiles
 .agents/skills/      Portable, progressively loaded skills
@@ -34,7 +35,7 @@ CONTRIBUTING.md      Toolkit maintenance rules
 
 The default ownership flow is `product_owner -> solutions_architect -> technical_architect -> software_engineer/infrastructure_engineer -> test_engineer`. Each role stays at its assigned abstraction level, follows project approval gates, and returns consequential changes to the appropriate owner rather than silently widening scope.
 
-The root [`AGENTS.md`](AGENTS.md) is a role router. Once installed in `~/.codex/AGENTS.md`, it asks Codex to infer the appropriate custom agent from an engineering request, so the user does not need to tag an agent. Codex remains the coordinator and waits for user approval before moving into the next lifecycle phase. Project-specific `AGENTS.md` files can add local constraints. Toolkit maintenance rules live in [`CONTRIBUTING.md`](CONTRIBUTING.md) so they are not copied to unrelated repositories.
+The root [`AGENTS.md`](AGENTS.md) contains repository-specific maintenance instructions. The reusable [`Codex routing instructions`](.codex/AGENTS.md) ask Codex to infer the appropriate custom agent from an engineering request, so the user does not need to tag an agent. The installer copies those instructions into `~/.codex/AGENTS.md`; Codex remains the coordinator and waits for user approval before moving into the next lifecycle phase. Project-specific root `AGENTS.md` files can add local constraints. Toolkit maintenance conventions are also documented in [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 Cross-role consultation uses a coordinator-routed conversation tree. Every exchange remains 1:1, but a specialist can return `clarification_needed` to continue a short conversation with its requester or `consultation_needed` to create a nested request to another role. The coordinator routes and resumes all threads, then unwinds answers to the originating role. Chains default to two nested levels and two clarification round trips; specialists never contact each other directly or treat consultation as lifecycle approval.
 
@@ -70,7 +71,7 @@ Run the installer from PowerShell:
 ./install/copy.ps1
 ```
 
-The installer copies `AGENTS.md` into `~/.codex/AGENTS.md`, Codex agent TOML files into `~/.codex/agents`, Copilot agent profiles into `~/.copilot/agents`, and complete skill directories into `~/.agents/skills`. One copy workflow is used for every managed artifact. The script is idempotent and refuses to replace a differing destination unless `-Force` is supplied explicitly. Start a new Codex session after installation to load the routing instructions.
+The installer copies `.codex/AGENTS.md` into `~/.codex/AGENTS.md`, Codex agent TOML files into `~/.codex/agents`, Copilot agent profiles into `~/.copilot/agents`, and complete skill directories into `~/.agents/skills`. One copy workflow is used for every managed artifact. The script is idempotent and refuses to replace a differing destination unless `-Force` is supplied explicitly. Start a new Codex session after installation to load the routing instructions.
 
 The scripts normally resolve the current Windows profile automatically. Automation running under another account can select the intended profile explicitly:
 
