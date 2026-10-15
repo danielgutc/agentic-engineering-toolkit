@@ -55,7 +55,7 @@ $errors = [System.Collections.Generic.List[string]]::new()
 $actualFiles = @(Get-ChildItem -LiteralPath $agentDirectory -File -Filter '*.toml')
 $skillDirectory = Join-Path $repositoryRoot '.agents/skills'
 $knownSkills = @(Get-ChildItem -LiteralPath $skillDirectory -Directory | Select-Object -ExpandProperty Name)
-$routingPath = Join-Path $repositoryRoot 'AGENTS.md'
+$routingPath = Join-Path $repositoryRoot '.codex/AGENTS.md'
 $routingInstructions = Get-Content -LiteralPath $routingPath -Raw
 
 foreach ($file in $actualFiles) {
