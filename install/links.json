@@ -85,6 +85,12 @@
       "target": ".agents/skills/repository-assessment"
     },
     {
+      "name": "implementation workspace layout skill",
+      "kind": "directory",
+      "source": ".agents/skills/implementation-workspace-layout",
+      "target": ".agents/skills/implementation-workspace-layout"
+    },
+    {
       "name": "product discovery skill",
       "kind": "directory",
       "source": ".agents/skills/product-discovery",

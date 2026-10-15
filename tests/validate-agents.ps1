@@ -26,28 +26,28 @@ $expectedAgents = [ordered]@{
         Model = 'gpt-5.6-sol'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
-        Skills = @('role-collaboration', 'repository-assessment', 'technical-design', 'dotnet-project-structure', 'domain-modeling', 'architecture-decision', 'c4-modeling', 'test-driven-development')
+        Skills = @('role-collaboration', 'repository-assessment', 'technical-design', 'implementation-workspace-layout', 'dotnet-project-structure', 'domain-modeling', 'architecture-decision', 'c4-modeling', 'test-driven-development')
     }
     'software-engineer.toml' = @{
         Name = 'software_engineer'
         Model = 'gpt-5.6-terra'
         ReasoningEffort = 'medium'
         Sandbox = 'workspace-write'
-        Skills = @('role-collaboration', 'repository-assessment', 'dotnet-project-structure', 'test-driven-development', 'code-review')
+        Skills = @('role-collaboration', 'repository-assessment', 'implementation-workspace-layout', 'dotnet-project-structure', 'test-driven-development', 'code-review')
     }
     'infrastructure-engineer.toml' = @{
         Name = 'infrastructure_engineer'
         Model = 'gpt-5.6-terra'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
-        Skills = @('role-collaboration', 'repository-assessment', 'architecture-decision', 'infrastructure-as-code', 'ci-cd-design')
+        Skills = @('role-collaboration', 'repository-assessment', 'implementation-workspace-layout', 'architecture-decision', 'infrastructure-as-code', 'ci-cd-design')
     }
     'test-engineer.toml' = @{
         Name = 'test_engineer'
         Model = 'gpt-5.6-luna'
         ReasoningEffort = 'medium'
         Sandbox = 'workspace-write'
-        Skills = @('role-collaboration', 'repository-assessment', 'integration-e2e-testing', 'code-review')
+        Skills = @('role-collaboration', 'repository-assessment', 'implementation-workspace-layout', 'integration-e2e-testing', 'code-review')
     }
 }
 

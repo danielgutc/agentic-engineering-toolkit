@@ -10,7 +10,7 @@ Create DevOps feedback and delivery workflows that are reproducible, observable,
 ## Workflow
 
 1. Identify change sources, traced quality requirements, target environments, release frequency, compliance needs, and failure tolerance.
-2. Inspect existing build, test, packaging, secret, deployment, and observability conventions.
+2. Inspect existing build, test, packaging, secret, deployment, and observability conventions, including the working directory and output contract of each affected implementation workspace.
 3. Separate fast feedback, unit and component validation, integrated verification, artifact creation, promotion, deployment, and post-deployment checks.
 4. Build an immutable artifact once and promote it between environments where practical.
 5. Apply least privilege, protected environments, explicit approvals, and concurrency controls.
@@ -23,3 +23,4 @@ Create DevOps feedback and delivery workflows that are reproducible, observable,
 - Do not deploy or enable a production workflow without explicit authorization.
 - Avoid duplicating commands that belong in repository build scripts.
 - Keep platform-specific choices aligned with project constraints rather than personal preference.
+- Use $implementation-workspace-layout when CI work requires creating or moving implementation-unit boundaries; otherwise consume the established workspace entry points and artifact locations.
