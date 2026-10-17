@@ -47,12 +47,20 @@ foreach ($link in $manifest.links) {
 
 $expectedSources = [System.Collections.Generic.List[string]]::new()
 $expectedSources.Add('.codex/AGENTS.md')
+$expectedSources.Add('.github/copilot-instructions.md')
 
 $routingEntry = @($manifest.links | Where-Object {
     ([string] $_.source).Replace('\', '/') -eq '.codex/AGENTS.md'
 })
 if ($routingEntry.Count -ne 1 -or ([string] $routingEntry[0].target).Replace('\', '/') -ne '.codex/AGENTS.md' -or $routingEntry[0].kind -ne 'file') {
     $errors.Add('.codex/AGENTS.md must be installed as a file at .codex/AGENTS.md.')
+}
+
+$copilotRoutingEntry = @($manifest.links | Where-Object {
+    ([string] $_.source).Replace('\', '/') -eq '.github/copilot-instructions.md'
+})
+if ($copilotRoutingEntry.Count -ne 1 -or ([string] $copilotRoutingEntry[0].target).Replace('\', '/') -ne '.copilot/copilot-instructions.md' -or $copilotRoutingEntry[0].kind -ne 'file') {
+    $errors.Add('.github/copilot-instructions.md must be installed as a file at .copilot/copilot-instructions.md.')
 }
 
 if (-not (Test-Path -LiteralPath (Join-Path $repositoryRoot 'AGENTS.md') -PathType Leaf)) {

@@ -7,6 +7,12 @@
       "target": ".codex/AGENTS.md"
     },
     {
+      "name": "Copilot user-level agent routing instructions",
+      "kind": "file",
+      "source": ".github/copilot-instructions.md",
+      "target": ".copilot/copilot-instructions.md"
+    },
+    {
       "name": "product owner agent",
       "kind": "file",
       "source": ".codex/agents/product-owner.toml",
