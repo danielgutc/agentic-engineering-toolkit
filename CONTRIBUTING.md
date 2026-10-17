@@ -10,6 +10,7 @@
 
 - Store native Codex agents in `.codex/agents/`.
 - Store reusable Codex agent-routing instructions in `.codex/AGENTS.md`.
+- Store reusable Copilot CLI agent-routing instructions in `.github/copilot-instructions.md`.
 - Store repository-specific maintenance instructions in the root `AGENTS.md`.
 - Store generated GitHub Copilot agent clones in `.github/agents/`.
 - Store portable skills in `.agents/skills/<skill-name>/SKILL.md`.
@@ -20,6 +21,7 @@
 
 - Give each agent one standard engineering role with explicit boundaries.
 - Treat `.codex/agents/*.toml` as the canonical agent definitions and `.github/agents/*.agent.md` as generated Copilot clones.
+- Keep Copilot-only model overrides in Copilot synchronization tooling; do not add Copilot settings to canonical Codex agent definitions.
 - Keep every Codex and Copilot agent synchronized. After changing a canonical agent, run `./tools/sync-copilot-agents.ps1` and commit both formats together.
 - Never edit a generated Copilot agent directly; update its canonical Codex TOML and regenerate it.
 - Maintain the canonical flow from product owner to solutions architect, technical architect, software and infrastructure engineers, and test engineer.
@@ -44,6 +46,7 @@
 
 - Install agents, skills, and routing instructions as regular files and directories copied into their user-level locations.
 - Copy `.codex/AGENTS.md` to `~/.codex/AGENTS.md`; keep repository maintenance guidance in the root `AGENTS.md` and out of the user-level installation.
+- Copy `.github/copilot-instructions.md` to `~/.copilot/copilot-instructions.md` for user-level Copilot CLI routing; keep repository maintenance guidance out of it.
 - Never replace a differing managed copy unless the caller explicitly uses `-Force`.
 - Never replace or delete an unrelated target.
 - Keep personal instruction files outside this repository.
