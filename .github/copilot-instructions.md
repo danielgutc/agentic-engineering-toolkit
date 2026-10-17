@@ -9,9 +9,9 @@ When the matching custom agents are available, Copilot is the coordinator: infer
 | Product problem, users, UX, MVP scope, priorities, requirements, or acceptance intent | `product-owner` | Copilot host default; no model pinned |
 | System scope, quality attributes, domain or service boundaries, integrations, C4 context or containers, or consequential architecture choices | `solutions-architect` | Copilot host default; no model pinned |
 | Components, interfaces, contracts, code structure, skeletons, test seams, or engineering tool choices inside an approved container | `technical-architect` | Copilot host default; no model pinned |
-| Implementing or fixing application behavior and developer-level tests within approved contracts | `software-engineer` | `qwen/qwen3.5-9b` |
+| Implementing or fixing application behavior and developer-level tests within approved contracts | `software-engineer` | `qwen/qwen3.5-9b` |`qwen/qwen3.5-9b` |
 | Build, CI/CD, environments, infrastructure, deployment, observability, or operations | `infrastructure-engineer` | Copilot host default; no model pinned |
-| Independent code review, integration or end-to-end tests, acceptance verification, regression evidence, or a test verdict | `test-engineer` | Copilot host default; no model pinned |
+| Independent code review, integration or end-to-end tests, acceptance verification, regression evidence, or a test verdict | `test-engineer` | `qwen/qwen3.5-9b` |
 
 Choose by the decision the request needs, not by a keyword alone. When a request spans roles, identify the current phase and its owner first. Ask one specialist at a time for dependent decisions; use parallel agents only for independent, bounded work. Pass relevant repository instructions, approved artifacts, constraints, and expected output to each agent. Keep each role within its ownership boundary and route a scope change back to the role that owns it.
 
