@@ -24,17 +24,24 @@ foreach ($link in $manifest.links) {
         $errors.Add("Duplicate manifest target: $targetKey")
     }
 
-    if (-not (Test-Path -LiteralPath $sourcePath)) {
+    $isOptional = $link.PSObject.Properties.Name -contains 'optional' -and $link.optional -eq $true
+    if (-not (Test-Path -LiteralPath $sourcePath) -and -not $isOptional) {
         $errors.Add("Manifest source does not exist: $sourceKey")
+    }
+
+    if ($isOptional -and ([string]::IsNullOrWhiteSpace([string] $link.feature) -or $link.feature -notmatch '^[a-z0-9-]+$')) {
+        $errors.Add("Optional source must have a safe feature identifier: $sourceKey")
     }
 
     switch ([string] $link.kind) {
         'file' {
+            if (-not (Test-Path -LiteralPath $sourcePath) -and $isOptional) { continue }
             if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) {
                 $errors.Add("File link source is not a file: $sourceKey")
             }
         }
         'directory' {
+            if (-not (Test-Path -LiteralPath $sourcePath) -and $isOptional) { continue }
             if (-not (Test-Path -LiteralPath $sourcePath -PathType Container)) {
                 $errors.Add("Directory link source is not a directory: $sourceKey")
             }
@@ -80,12 +87,20 @@ foreach ($skill in Get-ChildItem -LiteralPath (Join-Path $repositoryRoot '.agent
 }
 
 foreach ($expected in $expectedSources) {
+    $manifestEntry = @($manifest.links | Where-Object { ([string] $_.source).Replace('\', '/') -eq $expected })
+    if ($manifestEntry.Count -eq 1 -and $manifestEntry[0].PSObject.Properties.Name -contains 'optional' -and $manifestEntry[0].optional -eq $true -and -not (Test-Path -LiteralPath (Join-Path $repositoryRoot $expected))) {
+        continue
+    }
     if (-not $sources.Contains($expected)) {
         $errors.Add("Source is not represented in the link manifest: $expected")
     }
 }
 
 foreach ($source in $sources) {
+    $manifestEntry = @($manifest.links | Where-Object { ([string] $_.source).Replace('\', '/') -eq $source })
+    if ($manifestEntry.Count -eq 1 -and $manifestEntry[0].PSObject.Properties.Name -contains 'optional' -and $manifestEntry[0].optional -eq $true -and -not (Test-Path -LiteralPath (Join-Path $repositoryRoot $source))) {
+        continue
+    }
     if (-not $expectedSources.Contains($source)) {
         $errors.Add("Manifest contains unmanaged source: $source")
     }

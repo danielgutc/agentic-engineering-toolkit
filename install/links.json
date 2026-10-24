@@ -88,7 +88,9 @@
       "name": "role collaboration skill",
       "kind": "directory",
       "source": ".agents/skills/role-collaboration",
-      "target": ".agents/skills/role-collaboration"
+      "target": ".agents/skills/role-collaboration",
+      "optional": true,
+      "feature": "role-collaboration"
     },
     {
       "name": "repository assessment skill",

@@ -38,9 +38,7 @@ The default ownership flow is `product_owner -> solutions_architect -> technical
 
 The root [`AGENTS.md`](AGENTS.md) contains repository-specific maintenance instructions. The reusable [`Codex routing instructions`](.codex/AGENTS.md) and [`Copilot routing instructions`](.github/copilot-instructions.md) ask their respective coordinators to infer the appropriate custom agent from an engineering request, so the user does not need to tag an agent. The installer copies them into `~/.codex/AGENTS.md` and `~/.copilot/copilot-instructions.md`; each coordinator remains responsible for approvals between lifecycle phases. Project-specific root `AGENTS.md` files can add local constraints. Toolkit maintenance conventions are also documented in [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-Cross-role consultation uses a coordinator-routed conversation tree. Every exchange remains 1:1, but a specialist can return `clarification_needed` to continue a short conversation with its requester or `consultation_needed` to create a nested request to another role. The coordinator routes and resumes all threads, then unwinds answers to the originating role. Chains default to two nested levels and two clarification round trips; specialists never contact each other directly or treat consultation as lifecycle approval.
-
-Every role transition uses the shared [`role-collaboration` handoff contract](.agents/skills/role-collaboration/SKILL.md): the coordinator passes only the relevant artifact summary with approved scope, requirement IDs, prior decisions, open questions, the exact deliverable, and next owner. Specialists return conclusions, evidence, risks, and owner actions. Approval gates pause for user approval, and nested consultations preserve request and parent IDs while returning answers to the requesting role. Requested and actually reported models are recorded separately so routing and model selection can be assessed independently.
+Coordinator routing, role ownership, and user approval gates are always active. The optional [`role-collaboration`](.agents/skills/role-collaboration/SKILL.md) module adds the structured handoff protocol and, independently, a context-minimization policy. Its module-local `config.json` enables both by default; set `enabled` to `false` to use the generic fallback, or set only `context_minimization` to `false` to retain the protocol without isolated-context guidance. Invalid or missing configuration safely uses the fallback.
 
 Custom agents contain reusable engineering lifecycle rules but no project-specific architecture. They inherit applicable project instructions and route repeatable work to relevant skills.
 
@@ -93,6 +91,20 @@ Remove only unchanged copies managed by this checkout:
 ```powershell
 ./install/unlink.ps1 -UserHome C:\Users\danig
 ```
+
+Disable the optional collaboration framework in an installed toolkit by editing `~/.agents/skills/role-collaboration/config.json` (or edit the source `.agents/skills/role-collaboration/config.json` before a future install):
+
+```json
+{ "enabled": false, "context_minimization": false }
+```
+
+Remove only its unchanged installed copy with explicit feature selection:
+
+```powershell
+./install/unlink.ps1 -UserHome C:\Users\danig -Feature role-collaboration
+```
+
+Use `unlink.ps1 ... -Feature role-collaboration -Force` only for a modified or source-orphaned installed copy. Deleting the source module does not remove its installed copy; it is reported as orphaned until targeted removal. In contrast, `copy.ps1 -Force` refreshes from the source and can reset locally edited `config.json` settings. Do not run install scripts against a real profile merely to test them. Changing flags or deleting the module affects future requests; it cannot unload instructions already present in an active conversation, so start a fresh Codex or Copilot session after installation, removal, or when shedding loaded context.
 
 ## Validate
 

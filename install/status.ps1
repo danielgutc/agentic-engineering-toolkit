@@ -19,6 +19,6 @@ $results = foreach ($link in Get-ToolkitLinks -InstallDirectory $PSScriptRoot -U
 
 $results | Format-Table -AutoSize
 
-if ($results.State -contains 'Conflict' -or $results.State -contains 'WrongTarget' -or $results.State -contains 'MissingSource' -or $results.State -contains 'LinkedSourceMissing' -or $results.State -contains 'Outdated') {
+if ($results.State -contains 'Conflict' -or $results.State -contains 'WrongTarget' -or $results.State -contains 'MissingSource' -or $results.State -contains 'LinkedSourceMissing' -or $results.State -contains 'Outdated' -or $results.State -contains 'OrphanedOptionalSource') {
     exit 1
 }

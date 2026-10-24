@@ -51,6 +51,8 @@
 - Never replace a differing managed copy unless the caller explicitly uses `-Force`.
 - Never replace or delete an unrelated target.
 - Keep personal instruction files outside this repository.
+- Mark independently removable feature entries in `install/links.json` with `optional: true` and a safe `feature` identifier. Missing optional sources may be skipped, but required sources remain failures; an installed optional copy whose source is gone is reported and preserved until explicit scoped removal.
+- Keep optional-module validation inside the module where practical and let `tests/validate-optional-modules.ps1` dispatch it only while the source exists. Base role agents and routing files must retain the generic coordinator fallback without module-specific statuses or context policy.
 
 ## Verification
 
