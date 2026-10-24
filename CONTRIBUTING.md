@@ -32,6 +32,7 @@
 - Grant workspace write access only because each canonical role owns enduring artifacts, implementation, infrastructure, or tests; instructions must still constrain what it may change.
 - Route agents only to skills that exist in this repository.
 - Require concise handoffs containing conclusions, evidence, validation, and unresolved risks.
+- Keep the shared `role-collaboration` handoff contract synchronized with both coordinator routing files; handoffs must carry approved scope, requirement IDs, decisions, open questions, deliverable, next owner, and separate requested/reported model fields.
 
 ## Skill rules
 
@@ -55,3 +56,4 @@
 
 - Run `./tests/run.ps1` after changing agents, skills, synchronization tooling, or the installation manifest.
 - Keep validation dependency-free and compatible with PowerShell 7.
+- Extend `tests/validate-handoff-contract.ps1` when changing shared handoff or coordinator-routing requirements.

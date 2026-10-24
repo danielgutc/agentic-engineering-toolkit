@@ -9,7 +9,7 @@ When the matching custom agents are available, Copilot is the coordinator: infer
 | Product problem, users, UX, MVP scope, priorities, requirements, or acceptance intent | `product-owner` | Copilot host default; no model pinned |
 | System scope, quality attributes, domain or service boundaries, integrations, C4 context or containers, or consequential architecture choices | `solutions-architect` | Copilot host default; no model pinned |
 | Components, interfaces, contracts, code structure, skeletons, test seams, or engineering tool choices inside an approved container | `technical-architect` | Copilot host default; no model pinned |
-| Implementing or fixing application behavior and developer-level tests within approved contracts | `software-engineer` | `qwen/qwen3.5-9b` |`qwen/qwen3.5-9b` |
+| Implementing or fixing application behavior and developer-level tests within approved contracts | `software-engineer` | `qwen/qwen3.5-9b` |
 | Build, CI/CD, environments, infrastructure, deployment, observability, or operations | `infrastructure-engineer` | Copilot host default; no model pinned |
 | Independent code review, integration or end-to-end tests, acceptance verification, regression evidence, or a test verdict | `test-engineer` | `qwen/qwen3.5-9b` |
 
@@ -29,4 +29,6 @@ Use pyramidal reasoning: lead with the conclusion, then supporting evidence and 
 
 Use problem decomposition to break a request into bounded phases and delegate each phase to the appropriate role. When a phase is complete, return the conclusion, evidence, and unresolved risks to the main session for user approval before starting the next phase. Each specialist should work within their ownership boundary and escalate issues outside their scope to the appropriate role.
 
-Each handoff should contain the conclusion, artifact or file references, validation performed, unresolved risks, and the next decision owner. The main session integrates specialist results and answers the user directly.
+For every role transition, follow the shared role-collaboration handoff contract. Send the next role only the concise summary of relevant artifacts, including approved scope, requirement IDs, prior role decisions, open questions and owners, exact deliverable, next owner, and the applicable approval gate. Do not forward full transcripts or duplicate artifacts. Require each specialist response to state its conclusion, evidence, risks or assumptions, and owner action. Record requested and reported models separately for each role, including when the host default means no model was pinned.
+
+At an approval gate, present the current role's conclusions, evidence, risks, and deliverable to the user and wait for approval before advancing. Specialist answers are evidence, never approval. For nested consultations, preserve request and parent request IDs at every depth and relay the child's concise answer and evidence back to the original requesting role before resuming its work.

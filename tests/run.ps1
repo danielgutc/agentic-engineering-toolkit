@@ -9,6 +9,7 @@ $checks = @(
     'validate-agents.ps1',
     'validate-agent-sync.ps1',
     'validate-skills.ps1',
+    'validate-handoff-contract.ps1',
     'validate-workspace-guidance.ps1',
     'validate-links.ps1'
 )
