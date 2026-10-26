@@ -29,6 +29,7 @@ foreach ($item in $items) {
             throw "Cannot refresh '$($item.Name)': target differs from the toolkit source. Re-run with -Force to replace it: $($item.Target)"
         }
         'MissingSource' { throw "Cannot copy '$($item.Name)': source does not exist: $($item.Source)" }
+        'OrphanedOptionalSource' { Write-Warning "Skipped optional '$($item.Name)': its source is absent and its installed copy is preserved: $($item.Target)"; continue }
         'Conflict' { throw "Cannot copy '$($item.Name)': target has the wrong filesystem type: $($item.Target)" }
         'WrongTarget' { throw "Cannot copy '$($item.Name)': target is a link managed by another source: $($item.Target)" }
     }
@@ -38,6 +39,16 @@ foreach ($item in $items) {
     $state = $states[$item.Target]
     if ($state -eq 'Copied') {
         Write-Host "Already copied: $($item.Target)"
+        continue
+    }
+
+    if ($state -eq 'OrphanedOptionalSource') {
+        Write-Warning "Optional source absent; preserved installed copy: $($item.Target)"
+        continue
+    }
+
+    if ($state -eq 'NotInstalled' -and $item.Optional -and -not (Test-Path -LiteralPath $item.Source)) {
+        Write-Host "Optional source absent: $($item.Name)"
         continue
     }
 

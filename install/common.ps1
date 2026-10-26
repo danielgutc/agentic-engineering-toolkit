@@ -60,6 +60,8 @@ function Get-ToolkitLinks {
         [PSCustomObject]@{
             Name = [string] $entry.name
             Kind = [string] $entry.kind
+            Optional = ($entry.PSObject.Properties.Name -contains 'optional' -and $entry.optional -eq $true)
+            Feature = if ($entry.PSObject.Properties.Name -contains 'feature') { [string] $entry.feature } else { $null }
             Source = Get-NormalizedPath -Path (Join-Path $repositoryRoot $entry.source)
             Target = Get-NormalizedPath -Path (Join-Path $userRoot $entry.target)
         }
@@ -97,6 +99,9 @@ function Get-ToolkitLinkState {
 
     $targetItem = Get-Item -LiteralPath $Link.Target -Force -ErrorAction SilentlyContinue
     if ($null -eq $targetItem) {
+        if ($Link.Optional -and -not (Test-Path -LiteralPath $Link.Source)) {
+            return 'NotInstalled'
+        }
         if (Test-Path -LiteralPath $Link.Source) {
             return 'NotInstalled'
         }
@@ -147,6 +152,26 @@ function Get-ToolkitCopyState {
 
     $sourceType = if ($Link.Kind -eq 'directory') { 'Container' } else { 'Leaf' }
     if (-not (Test-Path -LiteralPath $Link.Source -PathType $sourceType)) {
+        if (Test-Path -LiteralPath $Link.Source) {
+            return 'MissingSource'
+        }
+
+        if ($Link.Optional) {
+            $targetItem = Get-Item -LiteralPath $Link.Target -Force -ErrorAction SilentlyContinue
+            if ($null -eq $targetItem) {
+                return 'NotInstalled'
+            }
+
+            if (-not [string]::IsNullOrWhiteSpace([string] $targetItem.LinkType)) {
+                return 'WrongTarget'
+            }
+
+            if (($Link.Kind -eq 'directory' -and -not $targetItem.PSIsContainer) -or ($Link.Kind -eq 'file' -and $targetItem.PSIsContainer)) {
+                return 'Conflict'
+            }
+
+            return 'OrphanedOptionalSource'
+        }
         return 'MissingSource'
     }
 
