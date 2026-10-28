@@ -17,6 +17,10 @@ Use tests to clarify and drive one observable behavior at a time.
 6. Refactor structure only while tests remain green and public behavior remains stable.
 7. Update traceability when the repository maintains it, then report behavior, evidence, and residual gaps.
 
+## MVP application
+
+For MVP work, the smallest passing change must still satisfy the intended final architecture and applicable production-quality contracts. Reduce feature scope instead of leaving PoC shortcuts that require a planned corrective rewrite for the known roadmap; qualify reused experiment code before version 1.0 acceptance. Normal green-test refactoring remains required where it improves structure.
+
 ## Boundaries
 
 - Test observable behavior rather than private implementation details.

@@ -44,6 +44,12 @@ Custom agents contain reusable engineering lifecycle rules but no project-specif
 
 Codex TOML files are canonical for shared role instructions. Run `./tools/sync-copilot-agents.ps1` after changing them; the generated Copilot profiles preserve those instructions and reasoning effort, inherit the Copilot host's model selection, and record the canonical Codex model as metadata. Copilot role-to-model routing for newly launched agents is documented separately in `.github/copilot-instructions.md`.
 
+## MVP engineering baseline
+
+The toolkit treats an MVP as the first production-quality **version 1.0**, built on its final approved technical architecture with limited features. Known approved roadmap increments must extend that foundation without a prerequisite corrective rewrite caused by shortcuts. PoCs and walking skeletons provide evidence; their shortcuts must be removed or qualified before release. Routine refactoring and reviewed evolution for new requirements remain valid, and future features are not prebuilt.
+
+Both coordinator routing files, all six canonical roles and the relevant skills apply this baseline. Product owns scope/acceptance, architects own lasting boundaries and extension rationale, implementation/delivery roles satisfy applicable production obligations, and independent verification distinguishes scoped experiments from release readiness. The toolkit works without the blueprint; adopting repositories can record equivalent release criteria in their own artifacts.
+
 ## Skills
 
 Skills are independent capabilities rather than agent personas. A skill may be used by multiple agents; for example, both the solutions architect and infrastructure engineer may use `architecture-decision`.

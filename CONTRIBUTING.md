@@ -29,6 +29,7 @@
 - Use Sol for product and architecture reasoning, Terra for implementation and infrastructure, and Luna for bounded integrated-system verification.
 - Apply specification-driven development, C4, DDD, TDD, DevOps, and evolutive architecture only in the roles and lifecycle stages where they belong.
 - Keep agent instructions concise and independent of a specific repository or technology stack.
+- Preserve the shared MVP baseline across both coordinator files, all canonical roles and relevant skills: production-quality version 1.0, intended final architecture, limited feature scope, and no known shortcut-driven rewrite required for the approved roadmap. Keep PoC evidence separate, permit routine refactoring/reviewed evolution and avoid speculative future implementation. Maintain semantic alignment with consuming blueprint policy without requiring a blueprint installation.
 - Grant workspace write access only because each canonical role owns enduring artifacts, implementation, infrastructure, or tests; instructions must still constrain what it may change.
 - Route agents only to skills that exist in this repository.
 - Require concise handoffs containing conclusions, evidence, validation, and unresolved risks.

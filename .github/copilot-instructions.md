@@ -19,6 +19,17 @@ When launching a subagent, select both the custom agent and the model listed for
 
 For a substantial role-owned task, delegate to the selected custom agent even if the user did not request delegation explicitly. For a brief factual answer, routine file lookup, or non-engineering request, respond in the main session unless specialist judgment is needed. If a custom agent is unavailable, do the work in the main session and state that limitation rather than substituting a different role silently.
 
+## MVP version 1.0 baseline
+
+Treat an MVP as the first production-quality version 1.0 with limited feature scope. Use these rules across roles:
+
+- Base implementation on the approved final technical architecture for its scope, including the intended boundaries, contracts and data ownership.
+- The known approved roadmap must extend that foundation without a prerequisite corrective rewrite caused by MVP shortcuts. Do not prebuild later features or speculative infrastructure.
+- Keep PoCs, spikes and walking skeletons distinct from release acceptance. Experimental shortcuts must be removed or qualified against the full applicable production contracts before their code enters version 1.0; passing a PoC or changing a version label is insufficient.
+- Reduce features or supported scenarios to keep the MVP small; preserve applicable engineering, operational, documentation and acceptance standards.
+
+Final architecture means the intended production baseline for the scope and known roadmap. Routine code refactoring and reviewed evolution for new requirements or evidence remain valid. Record existing gaps and route them to the owning role; this policy does not itself authorize redesign, broaden scope, bypass approvals or declare existing work version 1.0-ready. A shared solution or package is not itself a shortcut; assess whether its dependency and runtime boundaries satisfy the approved architecture.
+
 ## Phase flow and approvals
 
 The default flow is `product-owner` -> `solutions-architect` -> `technical-architect` -> `software-engineer` and/or `infrastructure-engineer` -> `test-engineer`. Start at the earliest phase needed by the request and reuse already approved work. Do not force a full lifecycle for a bounded fix or question.

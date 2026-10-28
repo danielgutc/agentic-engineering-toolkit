@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Apply production-quality MVP version 1.0 rules across Codex/Copilot coordinators, all engineering roles and lifecycle skills, separating experiment evidence from releasable scope without requiring speculative future implementation.
+
 ## 0.2.0
 
 - Replace broad architect, developer, and tester roles with six lifecycle-specific engineering agents.

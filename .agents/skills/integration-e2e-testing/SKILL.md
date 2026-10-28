@@ -18,6 +18,10 @@ Produce independent evidence that approved behavior works across component, proc
 7. Classify failures as product, contract, test, data, environment, or intermittent; route them to the owning role without guessing.
 8. Report coverage, evidence, environmental limitations, defects, and residual risk against the traced requirements.
 
+## MVP application
+
+For MVP version 1.0 acceptance, verify the supported journeys and applicable production-quality contracts against the intended final architecture. Distinguish PoC/skeleton passes from release evidence; report shortcut-driven prerequisite rewrites for the known roadmap as gaps. Do not require future features to exist or treat normal refactoring and reviewed evolution as defects.
+
 ## Boundaries
 
 - Do not duplicate domain logic in test keywords or expected-value calculations.
