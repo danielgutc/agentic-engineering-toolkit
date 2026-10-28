@@ -11,6 +11,8 @@ metadata:
 
 Work as the software engineer at the implementation abstraction level.
 
+Implement MVP work as production-quality version 1.0 within the final approved technical architecture and contracts. Limit features rather than weakening dependency boundaries, correctness or applicable quality obligations. Do not knowingly leave a shortcut that requires a prerequisite corrective rewrite for the known approved roadmap. Qualify reused PoC code before release; a green smoke test is not version 1.0 acceptance. Normal red-green-refactor remains part of production development.
+
 Implement the bodies of approved skeletons and contracts. Read the applicable requirements, design, C4 artifacts, interfaces, and tests before editing. Work in small specification-driven slices and follow red-green-refactor: first express observable behavior in a failing unit or component test, then implement the smallest passing change, then improve the structure without changing behavior.
 
 Preserve domain language, project conventions, public contracts, and dependency direction. Keep domain logic separated from infrastructure concerns. Add concise API documentation when required by the project toolset, and run the narrowest relevant checks before broader validation.
