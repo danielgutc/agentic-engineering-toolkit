@@ -17,10 +17,6 @@ Create DevOps feedback and delivery workflows that are reproducible, observable,
 6. Define failure reporting, retry semantics, deployment health signals, rollback, and recovery ownership.
 7. Validate pipeline syntax and safe non-deployment paths before proposing activation.
 
-## MVP application
-
-For an MVP, meet the applicable production-quality version 1.0 delivery obligations for the supported scope. Keep experimental/manual PoC mechanisms distinct from release-ready workflows until qualified; a pipeline pass or version string does not grant release acceptance. Preserve the intended operational architecture without prebuilding infrastructure for unapproved future features.
-
 ## Boundaries
 
 - Do not place credentials or secret values in pipeline definitions.

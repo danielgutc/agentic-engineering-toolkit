@@ -15,8 +15,8 @@ Create requirements that can guide design, implementation, and verification with
 4. Express each non-functional requirement as a measurable quality scenario with scope, stimulus, operating condition, response, and target when evidence supports one.
 5. Add acceptance examples for critical paths, boundary conditions, authorization, and failure cases without duplicating test implementation.
 6. Check requirements for ambiguity, contradiction, duplication, hidden design choices, and missing product traceability.
-7. For a version 1.0 MVP target, verify that included behavior carries the full approved quality and acceptance obligations. Feature deferral may reduce scope; it cannot waive those obligations or turn a PoC result into release evidence.
-8. Record feasibility and evolvability questions for architecture roles, including any known roadmap capability that appears to require replacing a temporary boundary, contract, or persisted meaning. Obtain approval before treating the specification as an enduring baseline.
+7. Trace release targets and quality and acceptance obligations to the approved product rationale. Record scope changes and evidence limits explicitly.
+8. Route feasibility and evolvability questions to the architecture owners, keeping their justification in project architecture artifacts. Obtain approval before treating the specification as an enduring baseline.
 
 ## Workflow Order
 
@@ -28,8 +28,7 @@ Create requirements that can guide design, implementation, and verification with
 - Name the product, system, or capability that must behave in the requirement. Do not use roadmap labels such as MVP, a version, or GA as its name or subject. Link stable requirement IDs to those milestones separately in the product roadmap so sequencing can change without rewriting the requirement.
 - Do not disguise architecture preferences as requirements.
 - Do not encode lifecycle rules, development-process gates, or “no refactoring” as functional or non-functional product requirements. Record version targeting and release qualification in roadmap or governance artifacts, and return durable-boundary feasibility to the architect.
-- Do not weaken an included requirement because its target is an MVP. Keep PoC assumptions and evidence explicitly provisional until the same behavior satisfies release acceptance.
-- Do not specify future capabilities merely to avoid hypothetical change. The known roadmap should be checked for extensibility, while new requirements and evidence may legitimately trigger reviewed refactoring later.
+- Use approved project acceptance criteria to assess release evidence; keep assumptions provisional and architectural rationale with its owners.
 - Do not invent numeric targets; identify the decision owner and evidence needed.
 - Keep acceptance intent observable and technology-neutral unless technology is an approved constraint.
 - Return product ambiguity to the product owner and feasibility conflicts to the appropriate architect.
