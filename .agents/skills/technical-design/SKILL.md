@@ -18,9 +18,9 @@ Create an implementation-ready internal design while preserving the approved sol
 7. Specify the minimal code skeleton and engineering toolset needed for feedback, static analysis, API checks, formatting, and documentation generation. When the approved unit needs a new or changed filesystem boundary, use $implementation-workspace-layout before applying language-specific structure.
 8. Validate the design against container responsibilities and hand off bounded implementation slices with explicit acceptance evidence.
 
-## MVP application
+## MVP rationale
 
-For MVP version 1.0, use the intended final technical architecture for the included scope; do not postpone required boundaries or contracts as an MVP shortcut. Show how known approved extensions fit without a corrective rewrite, avoid speculative abstractions, and identify PoC mechanisms that need qualification or removal before release.
+For an MVP, record the internal realization of approved product and solution decisions in owned technical-design artifacts. Justify responsibilities, contracts, dependencies, data structures, and test seams; assess known extension paths and deferred decisions with representative evidence. Apply the project's quality and release criteria without prebuilding future capabilities.
 
 ## Boundaries
 

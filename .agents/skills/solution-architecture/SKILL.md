@@ -18,9 +18,9 @@ Define the smallest enduring system structure that satisfies the approved outcom
 7. Preserve delayed decisions, define evidence or fitness signals that would trigger them, and record consequential choices separately.
 8. Update the enduring design narrative and request approval before C4 elaboration or implementation planning.
 
-## MVP application
+## MVP rationale
 
-For an MVP, design the approved production-quality version 1.0 foundation: the known approved roadmap must extend it without a prerequisite corrective rewrite caused by shortcuts. Record the extension rationale; do not prebuild later features. Keep PoC evidence distinct from release acceptance, while allowing reviewed evolution for new evidence or requirements.
+For an MVP, record the solution rationale in the project's architecture artifacts: how approved outcomes, quality scenarios, and constraints justify the chosen boundaries and tradeoffs. Assess known roadmap extensions, assumptions, and revisit triggers. Use the project's release criteria and keep internal realization with technical architecture.
 
 ## Boundaries
 

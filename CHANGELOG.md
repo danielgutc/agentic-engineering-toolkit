@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Apply production-quality MVP version 1.0 rules across Codex/Copilot coordinators, all engineering roles and lifecycle skills, separating experiment evidence from releasable scope without requiring speculative future implementation.
+- Place MVP rationale with product, solution architecture, and technical architecture roles and project artifacts; remove the blanket MVP baseline from global coordinators and downstream roles/skills.
 
 ## 0.2.0
 
