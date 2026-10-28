@@ -17,7 +17,6 @@ Develop a decision from evidence while delaying commitments that are not yet jus
 6. Recommend an option or explicitly defer the decision when evidence is insufficient.
 7. Define validation or fitness signals and conditions that should reopen the decision.
 8. Request approval from the decision owner before updating enduring architecture or beginning dependent work.
-9. When documentation is requested, use `assets/adr-template.md`.
 
 ## Boundaries
 
