@@ -6,6 +6,7 @@ $ErrorActionPreference = 'Stop'
 
 $checks = @(
     'validate-powershell.ps1',
+    'validate-model-catalog.ps1',
     'validate-agents.ps1',
     'validate-agent-sync.ps1',
     'validate-skills.ps1',

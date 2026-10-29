@@ -30,9 +30,9 @@ CONTRIBUTING.md      Toolkit maintenance rules
 | `product_owner` | `gpt-5.6-sol` (medium) | Product outcomes, MVP scope, UX intent, and testable requirements | Workspace write |
 | `solutions_architect` | `gpt-5.6-sol` (high) | System boundaries, domain architecture, C4 context and containers, and solution tradeoffs | Workspace write |
 | `technical_architect` | `gpt-5.6-sol` (high) | Container internals, components, interfaces, skeletons, test strategy, and engineering toolsets | Workspace write |
-| `software_engineer` | `gpt-5.6-terra` (medium) | TDD implementation of approved behavior and developer-level tests | Workspace write |
+| `software_engineer` | `qwen/qwen3.5-9b` (high) | TDD implementation of approved behavior and developer-level tests | Workspace write |
 | `infrastructure_engineer` | `gpt-5.6-terra` (high) | DevOps, build, delivery, environments, observability, and infrastructure as code | Workspace write |
-| `test_engineer` | `gpt-5.6-luna` (medium) | Independent integration, contract, end-to-end, acceptance, and regression verification | Workspace write |
+| `test_engineer` | `qwen/qwen3.5-9b` (high) | Independent integration, contract, end-to-end, acceptance, and regression verification | Workspace write |
 
 The default ownership flow is `product_owner -> solutions_architect -> technical_architect -> software_engineer/infrastructure_engineer -> test_engineer`. Each role stays at its assigned abstraction level, follows project approval gates, and returns consequential changes to the appropriate owner rather than silently widening scope.
 
@@ -111,6 +111,58 @@ Remove only its unchanged installed copy with explicit feature selection:
 ```
 
 Use `unlink.ps1 ... -Feature role-collaboration -Force` only for a modified or source-orphaned installed copy. Deleting the source module does not remove its installed copy; it is reported as orphaned until targeted removal. In contrast, `copy.ps1 -Force` refreshes from the source and can reset locally edited `config.json` settings. Do not run install scripts against a real profile merely to test them. Changing flags or deleting the module affects future requests; it cannot unload instructions already present in an active conversation, so start a fresh Codex or Copilot session after installation, removal, or when shedding loaded context.
+
+## Qwen reasoning in Codex
+
+The software and test engineers request `qwen/qwen3.5-9b` with `high` reasoning.
+Codex validates reasoning effort against its model catalog before launching an agent.
+If Qwen advertises an empty `supported_reasoning_levels` array, Codex rejects `high`
+even when another client can use it through the same gateway.
+
+For a gateway that supports Qwen high reasoning, generate an opt-in client catalog:
+
+```powershell
+./install/configure-model-catalog.ps1 -WhatIf
+./install/configure-model-catalog.ps1
+```
+
+The helper reads `models_cache.json` from the resolved Codex home and writes
+`models.toolkit.json` beside it. Use `-SourceCatalog PATH` for an existing custom
+catalog or a profile-specific cache such as `models_cache.codex_work_desktop.json`.
+Choose the source used by the intended host/profile so its complete model metadata
+is retained. `-UserHome PATH` selects `PATH/.codex`; otherwise `CODEX_HOME` is honored,
+falling back to the current user's `.codex` directory.
+
+All model entries, instructions, context limits and existing reasoning levels are
+preserved. Only Qwen receives a `high` capability if missing and a `high` default.
+An absent or duplicate Qwen entry is rejected rather than synthesizing metadata.
+The source is never changed. Repeated identical generation is a no-op; a differing
+output requires explicit `-Force`. The normal copy installer does not run this helper.
+
+Set the following at the root of the active Codex configuration, before any table
+headers, using the absolute path printed by the helper:
+
+```toml
+model_catalog_json = "C:/Users/YOUR_USER/.codex/models.toolkit.json"
+```
+
+Replace an existing root value instead of adding a duplicate. A selected profile's
+configuration can override this value. The helper does not edit personal configuration.
+Restart Codex and launch a small software-engineer task. Confirm that the gateway
+receives and forwards or translates `reasoning.effort = "high"` to the Qwen backend;
+a successful launch proves client acceptance, not that the backend used high reasoning.
+Copilot's reasoning controls remain host-specific.
+
+To roll back, remove this setting or restore its previous value, then restart Codex.
+The generated file may be removed after it is no longer referenced. Normal toolkit
+unlink does not remove this separately generated catalog. Regenerate from the updated
+active catalog after client/model metadata changes, reviewing differences before `-Force`.
+Never commit a personal cache or generated catalog into the toolkit.
+
+See the official [Codex configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference)
+for `model_catalog_json` and the [gateway catalog example](https://learn.chatgpt.com/docs/enterprise/bedrock-through-litellm)
+for preserving complete model entries. That gateway example concerns Bedrock; it does
+not establish Qwen backend support.
 
 ## Validate
 
