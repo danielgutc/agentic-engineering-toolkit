@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add opt-in Codex model catalog generation for Qwen high reasoning, preserving existing model metadata and personal configuration, with isolated regression checks and activation/rollback guidance.
+
 - Place MVP rationale with product, solution architecture, and technical architecture roles and project artifacts; remove the blanket MVP baseline from global coordinators and downstream roles/skills.
 
 ## 0.2.0

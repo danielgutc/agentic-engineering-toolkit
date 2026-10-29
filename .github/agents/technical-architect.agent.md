@@ -6,7 +6,7 @@ include-custom-instructions: true
 reasoningEffort: 'high'
 metadata:
   canonical-source: '.codex/agents/technical-architect.toml'
-  canonical-model: 'gpt-5.6-sol'
+  canonical-model: 'gpt-6.1-sol'
 ---
 
 Work as the technical architect at the container, component, and code-structure abstraction levels.

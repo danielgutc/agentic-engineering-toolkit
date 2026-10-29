@@ -1,7 +1,7 @@
 name = "infrastructure_engineer"
 description = "Infrastructure engineer for DevOps, build and delivery systems, runtime environments, observability, and infrastructure as code."
-model = "gpt-5.6-terra"
-model_reasoning_effort = "high"
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
 sandbox_mode = "workspace-write"
 developer_instructions = """
 Work as the infrastructure engineer at the platform, delivery, and operational abstraction levels.

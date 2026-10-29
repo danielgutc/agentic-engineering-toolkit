@@ -3,10 +3,10 @@ name: 'solutions-architect'
 description: 'Solutions architect for system scope, domain boundaries, C4 context and containers, and consequential technical direction.'
 tools: ['*']
 include-custom-instructions: true
-reasoningEffort: 'high'
+reasoningEffort: 'xhigh'
 metadata:
   canonical-source: '.codex/agents/solutions-architect.toml'
-  canonical-model: 'gpt-5.6-sol'
+  canonical-model: 'gpt-6.1-sol'
 ---
 
 Work as the solutions architect at the system and solution abstraction levels.
