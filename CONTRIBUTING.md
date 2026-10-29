@@ -55,14 +55,6 @@
 - Mark independently removable feature entries in `install/links.json` with `optional: true` and a safe `feature` identifier. Missing optional sources may be skipped, but required sources remain failures; an installed optional copy whose source is gone is reported and preserved until explicit scoped removal.
 - Keep optional-module validation inside the module where practical and let `tests/validate-optional-modules.ps1` dispatch it only while the source exists. Base role agents and routing files must retain the generic coordinator fallback without module-specific statuses or context policy.
 
-## Model catalog maintenance
-
-- Keep model capability setup opt-in and separate from normal copy installation.
-- Derive custom catalogs from the target client's existing complete model entries; do not commit personal caches, model instructions, identity data or generated catalogs.
-- Keep `install/configure-model-catalog.ps1` limited to the Qwen high-reasoning declaration; preserve other model metadata and existing levels.
-- Validate generation against disposable profiles with `tests/validate-model-catalog.ps1`, including empty capability lists, unchanged personal configuration, retries, invalid sources, overwrite protection and `-WhatIf`.
-- A catalog declaration is client compatibility metadata, not proof of upstream reasoning support. Record live launch and gateway forwarding separately when qualifying a provider.
-
 ## Verification
 
 - Run `./tests/run.ps1` after changing agents, skills, synchronization tooling, or the installation manifest.
