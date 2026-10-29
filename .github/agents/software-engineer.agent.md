@@ -3,7 +3,6 @@ name: 'software-engineer'
 description: 'Software engineer for TDD implementation of approved skeletons, behavior, and developer-level tests.'
 tools: ['*']
 include-custom-instructions: true
-reasoningEffort: 'high'
 metadata:
   canonical-source: '.codex/agents/software-engineer.toml'
   canonical-model: 'qwen/qwen3.5-9b'

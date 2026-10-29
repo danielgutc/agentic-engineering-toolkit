@@ -3,7 +3,7 @@ name: 'infrastructure-engineer'
 description: 'Infrastructure engineer for DevOps, build and delivery systems, runtime environments, observability, and infrastructure as code.'
 tools: ['*']
 include-custom-instructions: true
-reasoningEffort: 'high'
+reasoningEffort: 'medium'
 metadata:
   canonical-source: '.codex/agents/infrastructure-engineer.toml'
   canonical-model: 'gpt-6.1-sol'

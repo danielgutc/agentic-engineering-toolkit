@@ -30,8 +30,8 @@ $expectedAgents = [ordered]@{
     }
     'software-engineer.toml' = @{
         Name = 'software_engineer'
-        Model = 'gpt-5.6-terra'
-        ReasoningEffort = 'medium'
+        Model = 'qwen/qwen3.5-9b'
+        ReasoningEffort = $null
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'implementation-workspace-layout', 'dotnet-project-structure', 'test-driven-development', 'code-review')
     }
@@ -92,7 +92,10 @@ foreach ($entry in $expectedAgents.GetEnumerator()) {
         $errors.Add("$($entry.Key) does not define model '$($entry.Value.Model)'.")
     }
 
-    if ($content -notmatch "(?m)^model_reasoning_effort\s*=\s*`"$expectedReasoningEffort`"\s*$") {
+    if ($null -eq $entry.Value.ReasoningEffort -and $content -match '(?m)^model_reasoning_effort\s*=') {
+        $errors.Add("$($entry.Key) must not pin a reasoning effort.")
+    }
+    elseif ($null -ne $entry.Value.ReasoningEffort -and $content -notmatch "(?m)^model_reasoning_effort\s*=\s*`"$expectedReasoningEffort`"\s*$") {
         $errors.Add("$($entry.Key) does not define reasoning effort '$($entry.Value.ReasoningEffort)'.")
     }
 
