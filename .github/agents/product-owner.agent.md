@@ -3,7 +3,7 @@ name: 'product-owner'
 description: 'Product owner for product outcomes, MVP scope, user experience, and testable requirements.'
 tools: ['*']
 include-custom-instructions: true
-reasoningEffort: 'medium'
+reasoningEffort: 'high'
 metadata:
   canonical-source: '.codex/agents/product-owner.toml'
   canonical-model: 'gpt-6.1-sol'

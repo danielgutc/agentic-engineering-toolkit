@@ -16,12 +16,18 @@ function Get-TomlStringValue {
         [string] $Content,
 
         [Parameter(Mandatory)]
-        [string] $Key
+        [string] $Key,
+
+        [switch] $Optional
     )
 
     $pattern = '(?m)^{0}\s*=\s*"(?<value>[^"]*)"\s*$' -f [regex]::Escape($Key)
     $match = [regex]::Match($Content, $pattern)
     if (-not $match.Success) {
+        if ($Optional) {
+            return $null
+        }
+
         throw "Unable to read '$Key' from a Codex agent definition."
     }
 
@@ -46,7 +52,7 @@ function Get-CopilotAgentContent {
     $content = Get-Content -LiteralPath $CodexAgent.FullName -Raw
     $description = Get-TomlStringValue -Content $content -Key 'description'
     $model = Get-TomlStringValue -Content $content -Key 'model'
-    $reasoningEffort = Get-TomlStringValue -Content $content -Key 'model_reasoning_effort'
+    $reasoningEffort = Get-TomlStringValue -Content $content -Key 'model_reasoning_effort' -Optional
     $instructionsMatch = [regex]::Match(
         $content,
         '(?ms)^developer_instructions\s*=\s*"""\r?\n(?<value>.*?)\r?\n"""\s*$'
@@ -63,7 +69,11 @@ function Get-CopilotAgentContent {
         "description: $(ConvertTo-YamlString -Value $description)"
         "tools: ['*']"
         'include-custom-instructions: true'
-        "reasoningEffort: $(ConvertTo-YamlString -Value $reasoningEffort)"
+    )
+    if ($null -ne $reasoningEffort) {
+        $lines += "reasoningEffort: $(ConvertTo-YamlString -Value $reasoningEffort)"
+    }
+    $lines += @(
         'metadata:'
         "  canonical-source: $(ConvertTo-YamlString -Value $canonicalSource)"
         "  canonical-model: $(ConvertTo-YamlString -Value $model)"

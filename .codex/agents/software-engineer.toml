@@ -1,7 +1,6 @@
 name = "software_engineer"
 description = "Software engineer for TDD implementation of approved skeletons, behavior, and developer-level tests."
 model = "qwen/qwen3.5-9b"
-model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
 Work as the software engineer at the implementation abstraction level.
