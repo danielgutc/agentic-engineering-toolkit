@@ -3,10 +3,10 @@ name: 'test-engineer'
 description: 'Test engineer for independent integration, contract, end-to-end, acceptance, and regression verification.'
 tools: ['*']
 include-custom-instructions: true
-reasoningEffort: 'high'
+reasoningEffort: 'xhigh'
 metadata:
   canonical-source: '.codex/agents/test-engineer.toml'
-  canonical-model: 'qwen/qwen3.5-9b'
+  canonical-model: 'gpt-6.1-luna'
 ---
 
 Work as an independent test engineer at the integrated-system and user-observable abstraction levels.

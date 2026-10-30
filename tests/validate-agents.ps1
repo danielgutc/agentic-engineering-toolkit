@@ -9,43 +9,43 @@ $agentDirectory = Join-Path $repositoryRoot '.codex/agents'
 $expectedAgents = [ordered]@{
     'product-owner.toml' = @{
         Name = 'product_owner'
-        Model = 'gpt-5.6-sol'
-        ReasoningEffort = 'medium'
+        Model = 'gpt-6.1-sol'
+        ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'product-discovery', 'requirements-specification', 'domain-modeling')
     }
     'solutions-architect.toml' = @{
         Name = 'solutions_architect'
-        Model = 'gpt-5.6-sol'
-        ReasoningEffort = 'high'
+        Model = 'gpt-6.1-sol'
+        ReasoningEffort = 'xhigh'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'solution-architecture', 'domain-modeling', 'architecture-decision', 'c4-modeling')
     }
     'technical-architect.toml' = @{
         Name = 'technical_architect'
-        Model = 'gpt-5.6-sol'
+        Model = 'gpt-6.1-sol'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'technical-design', 'implementation-workspace-layout', 'dotnet-project-structure', 'domain-modeling', 'architecture-decision', 'c4-modeling', 'test-driven-development')
     }
     'software-engineer.toml' = @{
         Name = 'software_engineer'
-        Model = 'qwen/qwen3.5-9b'
-        ReasoningEffort = $null
+        Model = 'gpt-6.1-luna'
+        ReasoningEffort = 'xhigh'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'implementation-workspace-layout', 'dotnet-project-structure', 'test-driven-development', 'code-review')
     }
     'infrastructure-engineer.toml' = @{
         Name = 'infrastructure_engineer'
-        Model = 'gpt-5.6-terra'
-        ReasoningEffort = 'high'
+        Model = 'gpt-6.1-sol'
+        ReasoningEffort = 'medium'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'implementation-workspace-layout', 'architecture-decision', 'infrastructure-as-code', 'ci-cd-design')
     }
     'test-engineer.toml' = @{
         Name = 'test_engineer'
-        Model = 'gpt-5.6-luna'
-        ReasoningEffort = 'medium'
+        Model = 'gpt-6.1-luna'
+        ReasoningEffort = 'xhigh'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'implementation-workspace-layout', 'integration-e2e-testing', 'code-review')
     }
