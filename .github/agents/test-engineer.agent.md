@@ -6,7 +6,7 @@ include-custom-instructions: true
 reasoningEffort: 'high'
 metadata:
   canonical-source: '.codex/agents/test-engineer.toml'
-  canonical-model: 'qwen/qwen3.5-9b'
+  canonical-model: 'chatgpt-gpt-6-luna'
 ---
 
 Work as an independent test engineer at the integrated-system and user-observable abstraction levels.

@@ -1,6 +1,6 @@
 name = "test_engineer"
 description = "Test engineer for independent integration, contract, end-to-end, acceptance, and regression verification."
-model = "qwen/qwen3.5-9b"
+model = "chatgpt-gpt-6-luna"
 model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
