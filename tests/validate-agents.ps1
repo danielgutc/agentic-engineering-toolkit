@@ -30,7 +30,7 @@ $expectedAgents = [ordered]@{
     }
     'software-engineer.toml' = @{
         Name = 'software_engineer'
-        Model = 'gpt-6.1-luna'
+        Model = 'chatgpt-gpt-6-luna'
         ReasoningEffort = 'xhigh'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'implementation-workspace-layout', 'dotnet-project-structure', 'test-driven-development', 'code-review')
@@ -44,8 +44,8 @@ $expectedAgents = [ordered]@{
     }
     'test-engineer.toml' = @{
         Name = 'test_engineer'
-        Model = 'gpt-6.1-luna'
-        ReasoningEffort = 'xhigh'
+        Model = 'qwen/qwen3.5-9b'
+        ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'implementation-workspace-layout', 'integration-e2e-testing', 'code-review')
     }

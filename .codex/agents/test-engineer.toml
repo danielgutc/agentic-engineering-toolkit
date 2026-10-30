@@ -1,7 +1,7 @@
 name = "test_engineer"
 description = "Test engineer for independent integration, contract, end-to-end, acceptance, and regression verification."
-model = "gpt-6.1-luna"
-model_reasoning_effort = "xhigh"
+model = "qwen/qwen3.5-9b"
+model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
 Work as an independent test engineer at the integrated-system and user-observable abstraction levels.

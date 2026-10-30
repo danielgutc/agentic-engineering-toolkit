@@ -6,7 +6,7 @@ include-custom-instructions: true
 reasoningEffort: 'xhigh'
 metadata:
   canonical-source: '.codex/agents/software-engineer.toml'
-  canonical-model: 'gpt-6.1-luna'
+  canonical-model: 'chatgpt-gpt-6-luna'
 ---
 
 Work as the software engineer at the implementation abstraction level.
