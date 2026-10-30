@@ -32,7 +32,7 @@ CONTRIBUTING.md      Toolkit maintenance rules
 | `technical_architect` | `gpt-6.1-sol` (high) | Container internals, components, interfaces, skeletons, test strategy, and engineering toolsets | Workspace write |
 | `software_engineer` | `chatgpt-gpt-6-luna` (xhigh) | TDD implementation of approved behavior and developer-level tests | Workspace write |
 | `infrastructure_engineer` | `gpt-6.1-sol` (medium) | DevOps, build, delivery, environments, observability, and infrastructure as code | Workspace write |
-| `test_engineer` | `qwen/qwen3.5-9b` (high) | Independent integration, contract, end-to-end, acceptance, and regression verification | Workspace write |
+| `test_engineer` | `chatgpt-gpt-6-luna` (high) | Independent integration, contract, end-to-end, acceptance, and regression verification | Workspace write |
 
 The default ownership flow is `product_owner -> solutions_architect -> technical_architect -> software_engineer/infrastructure_engineer -> test_engineer`. Each role stays at its assigned abstraction level, follows project approval gates, and returns consequential changes to the appropriate owner rather than silently widening scope.
 

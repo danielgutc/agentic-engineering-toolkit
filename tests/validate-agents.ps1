@@ -44,7 +44,7 @@ $expectedAgents = [ordered]@{
     }
     'test-engineer.toml' = @{
         Name = 'test_engineer'
-        Model = 'qwen/qwen3.5-9b'
+        Model = 'chatgpt-gpt-6-luna'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'implementation-workspace-layout', 'integration-e2e-testing', 'code-review')
