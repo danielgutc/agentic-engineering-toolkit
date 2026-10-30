@@ -1,6 +1,6 @@
 name = "software_engineer"
 description = "Software engineer for TDD implementation of approved skeletons, behavior, and developer-level tests."
-model = "gpt-6.1-luna"
+model = "chatgpt-gpt-6-luna"
 model_reasoning_effort = "xhigh"
 sandbox_mode = "workspace-write"
 developer_instructions = """
