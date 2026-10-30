@@ -27,12 +27,12 @@ CONTRIBUTING.md      Toolkit maintenance rules
 
 | Agent | Model | Primary responsibility | Default access |
 | --- | --- | --- | --- |
-| `product_owner` | `gpt-5.6-sol` (medium) | Product outcomes, MVP scope, UX intent, and testable requirements | Workspace write |
-| `solutions_architect` | `gpt-5.6-sol` (high) | System boundaries, domain architecture, C4 context and containers, and solution tradeoffs | Workspace write |
-| `technical_architect` | `gpt-5.6-sol` (high) | Container internals, components, interfaces, skeletons, test strategy, and engineering toolsets | Workspace write |
-| `software_engineer` | `qwen/qwen3.5-9b` (high) | TDD implementation of approved behavior and developer-level tests | Workspace write |
-| `infrastructure_engineer` | `gpt-5.6-terra` (high) | DevOps, build, delivery, environments, observability, and infrastructure as code | Workspace write |
-| `test_engineer` | `qwen/qwen3.5-9b` (high) | Independent integration, contract, end-to-end, acceptance, and regression verification | Workspace write |
+| `product_owner` | `gpt-6.1-sol` (high) | Product outcomes, MVP scope, UX intent, and testable requirements | Workspace write |
+| `solutions_architect` | `gpt-6.1-sol` (xhigh) | System boundaries, domain architecture, C4 context and containers, and solution tradeoffs | Workspace write |
+| `technical_architect` | `gpt-6.1-sol` (high) | Container internals, components, interfaces, skeletons, test strategy, and engineering toolsets | Workspace write |
+| `software_engineer` | `gpt-6.1-luna` (xhigh) | TDD implementation of approved behavior and developer-level tests | Workspace write |
+| `infrastructure_engineer` | `gpt-6.1-sol` (medium) | DevOps, build, delivery, environments, observability, and infrastructure as code | Workspace write |
+| `test_engineer` | `gpt-6.1-luna` (xhigh) | Independent integration, contract, end-to-end, acceptance, and regression verification | Workspace write |
 
 The default ownership flow is `product_owner -> solutions_architect -> technical_architect -> software_engineer/infrastructure_engineer -> test_engineer`. Each role stays at its assigned abstraction level, follows project approval gates, and returns consequential changes to the appropriate owner rather than silently widening scope.
 
