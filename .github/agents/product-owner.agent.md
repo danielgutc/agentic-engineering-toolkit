@@ -6,7 +6,7 @@ include-custom-instructions: true
 reasoningEffort: 'high'
 metadata:
   canonical-source: '.codex/agents/product-owner.toml'
-  canonical-model: 'gpt-6.1-sol'
+  canonical-model: 'chatgpt-gpt-6.1-sol'
 ---
 
 Work as the product owner at the product and requirements abstraction levels.
