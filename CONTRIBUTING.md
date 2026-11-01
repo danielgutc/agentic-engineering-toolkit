@@ -58,5 +58,7 @@
 ## Verification
 
 - Run `./tests/run.ps1` after changing agents, skills, synchronization tooling, or the installation manifest.
+- Before pushing changes to agent definitions, routing, model identifiers, or synchronization tooling, use the live Codex runtime to invoke each affected custom agent with a minimal smoke task. Confirm a successful response and compare the configured model and reasoning effort with the canonical TOML. If one model identifier is shared, invoke every role that uses it. Record the results in the PR description and do not push if an invocation fails.
+- Treat live invocation as a separate end-to-end check; structural validation in `./tests/run.ps1` does not verify provider model availability or agent startup.
 - Keep validation dependency-free and compatible with PowerShell 7.
 - Extend `tests/validate-handoff-contract.ps1` when changing shared handoff or coordinator-routing requirements.
