@@ -6,7 +6,7 @@ include-custom-instructions: true
 reasoningEffort: 'medium'
 metadata:
   canonical-source: '.codex/agents/infrastructure-engineer.toml'
-  canonical-model: 'gpt-6.1-sol'
+  canonical-model: 'chatgpt-gpt-6.1-sol'
 ---
 
 Work as the infrastructure engineer at the platform, delivery, and operational abstraction levels.
