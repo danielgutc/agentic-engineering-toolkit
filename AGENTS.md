@@ -12,6 +12,8 @@ This repository is a project-neutral toolkit of Codex and GitHub Copilot agents 
 ## Scripts and validation
 
 - Run `./tests/run.ps1` after changes to agents, skills, synchronization tooling, PowerShell scripts, or the installation manifest.
+- Before pushing a branch that changes agent definitions, routing, model identifiers, or agent synchronization tooling, invoke every affected custom agent through the live Codex runtime with a minimal smoke task. Verify that each launch returns successfully and that its configured model and reasoning effort match the canonical TOML; test every role that shares a changed model identifier.
+- Include the invocation results in the PR description. Do not push if an affected agent fails to launch. The structural test suite does not replace this runtime check.
 - Use `./install/status.ps1` to inspect the user-level installation without changing it.
 - Use `./install/copy.ps1` to install or update the managed agents, skills, and Codex routing instructions. A differing destination is not replaced unless `-Force` is explicitly supplied.
 - Use `./install/unlink.ps1` to remove only unchanged copies managed by this checkout.
