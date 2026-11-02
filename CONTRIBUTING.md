@@ -26,7 +26,7 @@
 - Never edit a generated Copilot agent directly; update its canonical Codex TOML and regenerate it.
 - Maintain the canonical flow from product owner to solutions architect, technical architect, software and infrastructure engineers, and test engineer.
 - Preserve abstraction levels and artifact ownership; return scope changes to the role that owns the affected decision.
-- Use Sol for product and architecture reasoning, Terra for implementation and infrastructure, and Luna for bounded integrated-system verification.
+- Use `gpt-6.1-sol` for product, architecture, and infrastructure work, and `gpt-6-luna` for implementation and integrated-system verification. Keep model identifiers aligned with official OpenAI names and provider-exposed IDs, without the `chatgpt-` gateway alias prefix; preserve each role's reasoning effort unless intentionally changing it.
 - Apply specification-driven development, C4, DDD, TDD, DevOps, and evolutive architecture only in the roles and lifecycle stages where they belong.
 - Keep agent instructions concise and independent of a specific repository or technology stack.
 - Keep MVP rationale with product, solution architecture, and technical architecture ownership and their project artifacts. Coordinators route and enforce approvals; downstream roles follow approved contracts. Do not repeat a blanket MVP release or architecture policy across global instructions, roles, and skills.

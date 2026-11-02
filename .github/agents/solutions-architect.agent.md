@@ -6,7 +6,7 @@ include-custom-instructions: true
 reasoningEffort: 'xhigh'
 metadata:
   canonical-source: '.codex/agents/solutions-architect.toml'
-  canonical-model: 'chatgpt-gpt-6.1-sol'
+  canonical-model: 'gpt-6.1-sol'
 ---
 
 Work as the solutions architect at the system and solution abstraction levels.
