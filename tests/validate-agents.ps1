@@ -9,42 +9,42 @@ $agentDirectory = Join-Path $repositoryRoot '.codex/agents'
 $expectedAgents = [ordered]@{
     'product-owner.toml' = @{
         Name = 'product_owner'
-        Model = 'chatgpt-gpt-6.1-sol'
+        Model = 'gpt-6.1-sol'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'product-discovery', 'requirements-specification', 'domain-modeling')
     }
     'solutions-architect.toml' = @{
         Name = 'solutions_architect'
-        Model = 'chatgpt-gpt-6.1-sol'
+        Model = 'gpt-6.1-sol'
         ReasoningEffort = 'xhigh'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'solution-architecture', 'domain-modeling', 'architecture-decision', 'c4-modeling')
     }
     'technical-architect.toml' = @{
         Name = 'technical_architect'
-        Model = 'chatgpt-gpt-6.1-sol'
+        Model = 'gpt-6.1-sol'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'technical-design', 'implementation-workspace-layout', 'dotnet-project-structure', 'domain-modeling', 'architecture-decision', 'c4-modeling', 'test-driven-development')
     }
     'software-engineer.toml' = @{
         Name = 'software_engineer'
-        Model = 'chatgpt-gpt-6-luna'
+        Model = 'gpt-6-luna'
         ReasoningEffort = 'xhigh'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'implementation-workspace-layout', 'dotnet-project-structure', 'test-driven-development', 'code-review')
     }
     'infrastructure-engineer.toml' = @{
         Name = 'infrastructure_engineer'
-        Model = 'chatgpt-gpt-6.1-sol'
+        Model = 'gpt-6.1-sol'
         ReasoningEffort = 'medium'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'implementation-workspace-layout', 'architecture-decision', 'infrastructure-as-code', 'ci-cd-design')
     }
     'test-engineer.toml' = @{
         Name = 'test_engineer'
-        Model = 'chatgpt-gpt-6-luna'
+        Model = 'gpt-6-luna'
         ReasoningEffort = 'high'
         Sandbox = 'workspace-write'
         Skills = @('repository-assessment', 'implementation-workspace-layout', 'integration-e2e-testing', 'code-review')
