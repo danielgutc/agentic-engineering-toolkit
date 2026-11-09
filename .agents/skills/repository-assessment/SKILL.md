@@ -9,14 +9,14 @@ Build a compact evidence base that another agent can use without repeating the s
 
 ## Workflow
 
-1. Read applicable agent instructions and the top-level project documentation.
-2. Inventory the repository with targeted file search; exclude generated, dependency, and VCS directories.
-3. Identify product, requirements, design, C4, implementation, infrastructure, test, and traceability artifacts that govern the task. Map each implementation workspace separately from repository-level orchestration and cross-workspace tests.
-4. Record the current lifecycle stage and explicit approval evidence without inferring approval from file existence.
-5. Identify languages, build tools, entry points, deployment artifacts, tests, and validation commands. For each relevant implementation workspace, record its ownership boundary, toolchain scope, generated output, and whether it contains one or several projects or packages.
+1. Read applicable agent instructions and project documentation relevant to the question.
+2. Search the relevant repository areas; broaden the inventory when the execution path or ownership is unclear. Exclude generated, dependency, and VCS directories.
+3. Identify the requirements, design, implementation, infrastructure, and test artifacts that govern the task. When workspace boundaries affect the question, distinguish implementation workspaces from repository-level orchestration and cross-workspace tests.
+4. Record lifecycle stage and explicit approval evidence when they affect the requested work, without inferring approval from file existence.
+5. Identify relevant entry points, tools, tests, and validation commands. Include workspace ownership, toolchain scope, generated output, and project or package structure when needed to explain the execution path or impact.
 6. Trace only the code paths and artifact relationships relevant to the stated task.
 7. Separate observed facts from inferences and unresolved questions.
-8. Return the evidence pack described in `references/evidence-pack.md`.
+8. Return the findings and file references needed to answer the question or continue the work. For broader orientation or a handoff spanning several areas, use the relevant sections of [the evidence pack](references/evidence-pack.md).
 
 ## Boundaries
 

@@ -1,6 +1,6 @@
 # Evidence Pack
 
-Return only information another agent needs to continue:
+Return only information another agent needs to continue. Select the sections relevant to the task; omit sections that add no useful evidence.
 
 ## Scope
 

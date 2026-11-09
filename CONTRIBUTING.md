@@ -39,8 +39,10 @@
 
 - Model a skill as a reusable procedure, not a persona.
 - Give each skill a narrow trigger description and a self-contained workflow.
+- Describe when a skill applies in natural language; no fixed trigger or exclusion phrases are required.
 - Align skills with lifecycle outcomes and abstraction levels rather than duplicating an agent's full role.
 - Keep shared entrypoints compact and load strategic, tactical, or technology-specific references only when needed.
+- Scale procedures to the task and evidence. Make optional analysis conditional and preserve the user's chosen direction and scope.
 - Put optional detail in `references/`, reusable output material in `assets/`, and automation in `scripts/`.
 - Do not duplicate project templates or project-specific instructions in global skills.
 
@@ -61,4 +63,5 @@
 - Before pushing changes to agent definitions, routing, model identifiers, or synchronization tooling, use the live Codex runtime to invoke each affected custom agent with a minimal smoke task. Confirm a successful response and compare the configured model and reasoning effort with the canonical TOML. If one model identifier is shared, invoke every role that uses it. Record the results in the PR description and do not push if an invocation fails.
 - Treat live invocation as a separate end-to-end check; structural validation in `./tests/run.ps1` does not verify provider model availability or agent startup.
 - Keep validation dependency-free and compatible with PowerShell 7.
+- Check skill metadata and local reference targets structurally. Use the representative requests in `tests/skill-scenarios.md` to evaluate routing and observable behavior when relevant skills change; metadata checks alone do not establish those outcomes.
 - Extend `tests/validate-handoff-contract.ps1` when changing shared handoff or coordinator-routing requirements.
