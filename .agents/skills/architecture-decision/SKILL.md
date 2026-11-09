@@ -11,7 +11,7 @@ Develop a decision from evidence while delaying commitments that are not yet jus
 
 1. State the decision, owning role, abstraction level, scope, and why it is needed now.
 2. Gather traced requirements, constraints, quality-attribute scenarios, existing decisions, and evolution pressures.
-3. Define weighted evaluation criteria before comparing options.
+3. Define evaluation criteria before comparing options. Use qualitative priorities or explicit weights when they clarify material tradeoffs; justify numeric weights with available evidence.
 4. Consider at least two viable options, including retaining the current design when applicable.
 5. Compare benefits, costs, risks, reversibility, migration, operations, and future change consequences.
 6. Recommend an option or explicitly defer the decision when evidence is insufficient.

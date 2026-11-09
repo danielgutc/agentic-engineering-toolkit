@@ -68,6 +68,8 @@ Skills are independent capabilities rather than agent personas. A skill may be u
 
 Skill entrypoints stay focused. Conditional detail, such as strategic versus tactical domain-driven design, is loaded from references only when the task needs it.
 
+Skills scale their work to the question. Repository assessment can return a focused impact analysis, architecture decisions can use qualitative priorities, and product discovery preserves a chosen direction while examining its assumptions.
+
 An implementation workspace is an approved unit's owned build, test, documentation, toolchain, and generated-output boundary. It can contain several language projects or packages. Repositories may have one workspace or several independent sibling workspaces, including non-code units such as customized images or database schemas. The workspace skill does not create architecture boundaries; technology-specific skills, such as `dotnet-project-structure`, refine the structure inside an already known workspace.
 
 Codex discovers user-level skills under `~/.agents/skills` and user-level custom agents under `~/.codex/agents`.
@@ -120,7 +122,7 @@ Use `unlink.ps1 ... -Feature role-collaboration -Force` only for a modified or s
 ./tests/run.ps1
 ```
 
-The checks validate agent fields, skill metadata, and the installation manifest without requiring third-party modules.
+The checks validate agent fields, skill metadata and local reference targets, and the installation manifest without requiring third-party modules. Representative routing and behavior checks are described in [the skill scenarios](tests/skill-scenarios.md); they require a separate model evaluation.
 
 ## Delegation guidance
 

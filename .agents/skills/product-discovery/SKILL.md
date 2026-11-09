@@ -12,7 +12,7 @@ Turn an opportunity into evidence-based product direction without prematurely se
 1. State the problem, affected users or actors, current behavior, and desired outcome.
 2. Separate observed evidence from stakeholder beliefs, assumptions, and unanswered questions.
 3. Describe the important user journeys, contexts, pain points, accessibility needs, and experience risks.
-4. Use design-thinking divergence to explore alternative ways to achieve the outcome before converging on a product direction.
+4. When product direction is unresolved, explore alternative ways to achieve the outcome before converging. Preserve an explicitly chosen direction and examine its assumptions within scope unless the user asks to revisit it.
 5. Define the MVP as the smallest coherent useful outcome; explain target users, included and deferred journeys, and why that scope creates value and tests the highest-risk assumption.
 6. Record the product rationale, quality outcomes, release definition, acceptance criteria, and known next outcomes in project artifacts. Leave architecture selection and extension feasibility to the architecture owners.
 7. Distinguish experiment evidence from release evidence using the project's acceptance criteria; record unresolved gaps and owners.
