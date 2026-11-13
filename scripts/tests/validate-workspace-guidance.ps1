@@ -4,7 +4,7 @@ param()
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $assetRoot = Join-Path $repositoryRoot '.agents/skills/dotnet-project-structure/assets'
 $propsPath = Join-Path $assetRoot 'Directory.Build.props'
 $ignorePath = Join-Path $assetRoot 'gitignore.fragment'

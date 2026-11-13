@@ -4,8 +4,8 @@ param()
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
-$manifest = Get-Content -LiteralPath (Join-Path $repositoryRoot 'install/links.json') -Raw | ConvertFrom-Json
+$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
+$manifest = Get-Content -LiteralPath (Join-Path $repositoryRoot 'scripts/install/links.json') -Raw | ConvertFrom-Json
 $optionalLinks = @($manifest.links | Where-Object { $_.PSObject.Properties.Name -contains 'optional' -and $_.optional -eq $true })
 
 foreach ($link in $optionalLinks) {

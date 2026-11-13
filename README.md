@@ -17,9 +17,9 @@ AGENTS.md            Repository-specific maintenance instructions
 .codex/agents/       Native Codex custom-agent definitions
 .github/agents/      Generated GitHub Copilot custom-agent profiles
 .agents/skills/      Portable, progressively loaded skills
-install/             Unified user-level copy management
-tests/               Dependency-free structural validation
-tools/               Agent synchronization tooling
+scripts/install/     Unified user-level copy management
+scripts/tests/       Dependency-free structural validation
+scripts/maintenance/ Agent synchronization tooling
 CONTRIBUTING.md      Toolkit maintenance rules
 ```
 
@@ -44,7 +44,7 @@ Coordinator routing, role ownership, and user approval gates are always active. 
 
 Custom agents contain reusable engineering lifecycle rules but no project-specific architecture. They inherit applicable project instructions and route repeatable work to relevant skills.
 
-Codex TOML files are canonical for shared role instructions. Run `./tools/sync-copilot-agents.ps1` after changing them; the generated Copilot profiles preserve those instructions and reasoning effort, inherit the Copilot host's model selection, and record the canonical Codex model as metadata. Copilot role-to-model routing for newly launched agents is documented separately in `.github/copilot-instructions.md`.
+Codex TOML files are canonical for shared role instructions. Run `./scripts/maintenance/sync-copilot-agents.ps1` after changing them; the generated Copilot profiles preserve those instructions and reasoning effort, inherit the Copilot host's model selection, and record the canonical Codex model as metadata. Copilot role-to-model routing for newly launched agents is documented separately in `.github/copilot-instructions.md`.
 
 ## MVP rationale ownership
 
@@ -79,7 +79,7 @@ Codex discovers user-level skills under `~/.agents/skills` and user-level custom
 Run the installer from PowerShell:
 
 ```powershell
-./install/copy.ps1
+./scripts/install/copy.ps1
 ```
 
 The installer copies `.codex/AGENTS.md` into `~/.codex/AGENTS.md`, `.github/copilot-instructions.md` into `~/.copilot/copilot-instructions.md`, Codex agent TOML files into `~/.codex/agents`, Copilot agent profiles into `~/.copilot/agents`, and complete skill directories into `~/.agents/skills`. One copy workflow is used for every managed artifact. The script is idempotent and refuses to replace a differing destination unless `-Force` is supplied explicitly. Start a new Codex or Copilot CLI session after installation to load the user-level routing instructions.
@@ -87,19 +87,19 @@ The installer copies `.codex/AGENTS.md` into `~/.codex/AGENTS.md`, `.github/copi
 The scripts normally resolve the current Windows profile automatically. Automation running under another account can select the intended profile explicitly:
 
 ```powershell
-./install/copy.ps1 -UserHome C:\Users\danig
+./scripts/install/copy.ps1 -UserHome C:\Users\danig
 ```
 
 Inspect installation state without changing it:
 
 ```powershell
-./install/status.ps1 -UserHome C:\Users\danig
+./scripts/install/status.ps1 -UserHome C:\Users\danig
 ```
 
 Remove only unchanged copies managed by this checkout:
 
 ```powershell
-./install/unlink.ps1 -UserHome C:\Users\danig
+./scripts/install/unlink.ps1 -UserHome C:\Users\danig
 ```
 
 Disable the optional collaboration framework in an installed toolkit by editing `~/.agents/skills/role-collaboration/config.json` (or edit the source `.agents/skills/role-collaboration/config.json` before a future install):
@@ -111,7 +111,7 @@ Disable the optional collaboration framework in an installed toolkit by editing 
 Remove only its unchanged installed copy with explicit feature selection:
 
 ```powershell
-./install/unlink.ps1 -UserHome C:\Users\danig -Feature role-collaboration
+./scripts/install/unlink.ps1 -UserHome C:\Users\danig -Feature role-collaboration
 ```
 
 Use `unlink.ps1 ... -Feature role-collaboration -Force` only for a modified or source-orphaned installed copy. Deleting the source module does not remove its installed copy; it is reported as orphaned until targeted removal. In contrast, `copy.ps1 -Force` refreshes from the source and can reset locally edited `config.json` settings. Do not run install scripts against a real profile merely to test them. Changing flags or deleting the module affects future requests; it cannot unload instructions already present in an active conversation, so start a fresh Codex or Copilot session after installation, removal, or when shedding loaded context.
@@ -119,10 +119,10 @@ Use `unlink.ps1 ... -Feature role-collaboration -Force` only for a modified or s
 ## Validate
 
 ```powershell
-./tests/run.ps1
+./scripts/tests/run.ps1
 ```
 
-The checks validate agent fields, skill metadata and local reference targets, and the installation manifest without requiring third-party modules. Representative routing and behavior checks are described in [the skill scenarios](tests/skill-scenarios.md); they require a separate model evaluation.
+The checks validate agent fields, skill metadata and local reference targets, and the installation manifest without requiring third-party modules. Representative routing and behavior checks are described in [the skill scenarios](scripts/tests/skill-scenarios.md); they require a separate model evaluation.
 
 ## Delegation guidance
 

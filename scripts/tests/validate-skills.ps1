@@ -7,7 +7,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 if ([string]::IsNullOrWhiteSpace($SkillRoot)) {
-    $SkillRoot = Join-Path (Split-Path -Parent $PSScriptRoot) '.agents/skills'
+    $SkillRoot = Join-Path (Join-Path $PSScriptRoot '../..') '.agents/skills'
 }
 $SkillRoot = [System.IO.Path]::GetFullPath($SkillRoot)
 if (-not (Test-Path -LiteralPath $SkillRoot -PathType Container)) {
