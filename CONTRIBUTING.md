@@ -14,15 +14,16 @@
 - Store repository-specific maintenance instructions in the root `AGENTS.md`.
 - Store generated GitHub Copilot agent clones in `.github/agents/`.
 - Store portable skills in `.agents/skills/<skill-name>/SKILL.md`.
-- Store user-level copy management in `install/`.
-- Store structural validation in `tests/`.
+- Store user-level copy management in `scripts/install/`.
+- Store structural validation in `scripts/tests/`.
+- Store repository maintenance tooling in `scripts/maintenance/`.
 
 ## Agent rules
 
 - Give each agent one standard engineering role with explicit boundaries.
 - Treat `.codex/agents/*.toml` as the canonical agent definitions and `.github/agents/*.agent.md` as generated Copilot clones.
 - Keep Copilot-only model overrides in Copilot synchronization tooling; do not add Copilot settings to canonical Codex agent definitions.
-- Keep every Codex and Copilot agent synchronized. After changing a canonical agent, run `./tools/sync-copilot-agents.ps1` and commit both formats together.
+- Keep every Codex and Copilot agent synchronized. After changing a canonical agent, run `./scripts/maintenance/sync-copilot-agents.ps1` and commit both formats together.
 - Never edit a generated Copilot agent directly; update its canonical Codex TOML and regenerate it.
 - Maintain the canonical flow from product owner to solutions architect, technical architect, software and infrastructure engineers, and test engineer.
 - Preserve abstraction levels and artifact ownership; return scope changes to the role that owns the affected decision.
@@ -54,14 +55,14 @@
 - Never replace a differing managed copy unless the caller explicitly uses `-Force`.
 - Never replace or delete an unrelated target.
 - Keep personal instruction files outside this repository.
-- Mark independently removable feature entries in `install/links.json` with `optional: true` and a safe `feature` identifier. Missing optional sources may be skipped, but required sources remain failures; an installed optional copy whose source is gone is reported and preserved until explicit scoped removal.
-- Keep optional-module validation inside the module where practical and let `tests/validate-optional-modules.ps1` dispatch it only while the source exists. Base role agents and routing files must retain the generic coordinator fallback without module-specific statuses or context policy.
+- Mark independently removable feature entries in `scripts/install/links.json` with `optional: true` and a safe `feature` identifier. Missing optional sources may be skipped, but required sources remain failures; an installed optional copy whose source is gone is reported and preserved until explicit scoped removal.
+- Keep optional-module validation inside the module where practical and let `scripts/tests/validate-optional-modules.ps1` dispatch it only while the source exists. Base role agents and routing files must retain the generic coordinator fallback without module-specific statuses or context policy.
 
 ## Verification
 
-- Run `./tests/run.ps1` after changing agents, skills, synchronization tooling, or the installation manifest.
+- Run `./scripts/tests/run.ps1` after changing agents, skills, synchronization tooling, or the installation manifest.
 - Before pushing changes to agent definitions, routing, model identifiers, or synchronization tooling, use the live Codex runtime to invoke each affected custom agent with a minimal smoke task. Confirm a successful response and compare the configured model and reasoning effort with the canonical TOML. If one model identifier is shared, invoke every role that uses it. Record the results in the PR description and do not push if an invocation fails.
-- Treat live invocation as a separate end-to-end check; structural validation in `./tests/run.ps1` does not verify provider model availability or agent startup.
+- Treat live invocation as a separate end-to-end check; structural validation in `./scripts/tests/run.ps1` does not verify provider model availability or agent startup.
 - Keep validation dependency-free and compatible with PowerShell 7.
-- Check skill metadata and local reference targets structurally. Use the representative requests in `tests/skill-scenarios.md` to evaluate routing and observable behavior when relevant skills change; metadata checks alone do not establish those outcomes.
-- Extend `tests/validate-handoff-contract.ps1` when changing shared handoff or coordinator-routing requirements.
+- Check skill metadata and local reference targets structurally. Use the representative requests in `scripts/tests/skill-scenarios.md` to evaluate routing and observable behavior when relevant skills change; metadata checks alone do not establish those outcomes.
+- Extend `scripts/tests/validate-handoff-contract.ps1` when changing shared handoff or coordinator-routing requirements.

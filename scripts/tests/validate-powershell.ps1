@@ -4,11 +4,9 @@ param()
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $scriptFiles = @(
-    Get-ChildItem -LiteralPath (Join-Path $repositoryRoot 'install') -File -Filter '*.ps1'
-    Get-ChildItem -LiteralPath (Join-Path $repositoryRoot 'tests') -File -Filter '*.ps1'
-    Get-ChildItem -LiteralPath (Join-Path $repositoryRoot 'tools') -File -Filter '*.ps1'
+    Get-ChildItem -LiteralPath (Join-Path $repositoryRoot 'scripts') -Recurse -File -Filter '*.ps1'
 )
 $errors = [System.Collections.Generic.List[string]]::new()
 

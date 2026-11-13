@@ -4,7 +4,7 @@ param()
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $temporaryRoot = Join-Path ([System.IO.Path]::GetTempPath()) ("toolkit-optional-install-" + [guid]::NewGuid().ToString('N'))
 function Assert-TemporaryPath {
     param([string] $Path)
@@ -16,17 +16,17 @@ function Assert-TemporaryPath {
     }
 }
 try {
-    $installRoot = Join-Path $temporaryRoot 'install'
+    $installRoot = Join-Path $temporaryRoot 'scripts/install'
     $userHome = Join-Path $temporaryRoot 'user'
     $moduleSource = Join-Path $temporaryRoot 'optional-module'
     $requiredSource = Join-Path $temporaryRoot 'required.txt'
     New-Item -ItemType Directory -Path $installRoot, $moduleSource -Force | Out-Null
     Set-Content -LiteralPath (Join-Path $moduleSource 'module.txt') -Value 'optional' -NoNewline
     Set-Content -LiteralPath $requiredSource -Value 'required' -NoNewline
-    Copy-Item -LiteralPath (Join-Path $repositoryRoot 'install/common.ps1') -Destination $installRoot
-    Copy-Item -LiteralPath (Join-Path $repositoryRoot 'install/copy.ps1') -Destination $installRoot
-    Copy-Item -LiteralPath (Join-Path $repositoryRoot 'install/status.ps1') -Destination $installRoot
-    Copy-Item -LiteralPath (Join-Path $repositoryRoot 'install/unlink.ps1') -Destination $installRoot
+    Copy-Item -LiteralPath (Join-Path $repositoryRoot 'scripts/install/common.ps1') -Destination $installRoot
+    Copy-Item -LiteralPath (Join-Path $repositoryRoot 'scripts/install/copy.ps1') -Destination $installRoot
+    Copy-Item -LiteralPath (Join-Path $repositoryRoot 'scripts/install/status.ps1') -Destination $installRoot
+    Copy-Item -LiteralPath (Join-Path $repositoryRoot 'scripts/install/unlink.ps1') -Destination $installRoot
     @'
 {
   "links": [

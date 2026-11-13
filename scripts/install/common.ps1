@@ -43,7 +43,7 @@ function Get-ToolkitLinks {
         [string] $UserHome
     )
 
-    $repositoryRoot = Get-NormalizedPath -Path (Join-Path $InstallDirectory '..')
+    $repositoryRoot = Get-NormalizedPath -Path (Join-Path $InstallDirectory '../..')
     $manifestPath = Join-Path $InstallDirectory 'links.json'
     if ([string]::IsNullOrWhiteSpace($UserHome)) {
         $UserHome = [Environment]::GetFolderPath([Environment+SpecialFolder]::UserProfile)

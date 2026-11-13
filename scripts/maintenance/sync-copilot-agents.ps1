@@ -6,7 +6,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $codexAgentRoot = Join-Path $repositoryRoot '.codex/agents'
 $copilotAgentRoot = Join-Path $repositoryRoot '.github/agents'
 
