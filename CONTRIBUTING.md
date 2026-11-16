@@ -35,6 +35,7 @@
 - Route agents only to skills that exist in this repository.
 - Require concise handoffs containing conclusions, evidence, validation, and unresolved risks.
 - Keep the shared `role-collaboration` handoff contract synchronized with both coordinator routing files; handoffs must carry approved scope, requirement IDs, decisions, open questions, deliverable, next owner, and separate requested/reported model fields.
+- Keep shared execution guidance consistent across both coordinators: early evidence, stable task inputs, owned artifacts, completion criteria, and integration or review checkpoints. Use existing task records for ownership and delay tracking rather than adding mandatory ceremony.
 
 ## Skill rules
 
@@ -46,6 +47,7 @@
 - Scale procedures to the task and evidence. Make optional analysis conditional and preserve the user's chosen direction and scope.
 - Put optional detail in `references/`, reusable output material in `assets/`, and automation in `scripts/`.
 - Do not duplicate project templates or project-specific instructions in global skills.
+- Generalize coding lessons across services, libraries, infrastructure code, and user interfaces, with supporting technical design and collaboration. Keep browser-specific checks conditional on UI work and distinguish implementation-owned integration evidence from an independent acceptance verdict.
 
 ## Installation rules
 

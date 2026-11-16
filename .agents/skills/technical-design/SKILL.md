@@ -10,13 +10,14 @@ Create an implementation-ready internal design while preserving the approved sol
 ## Workflow
 
 1. Confirm the owning container, requirement identifiers, architecture decisions, constraints, and unresolved risks.
+   For an existing implementation, describe the design delta, highest-risk assumptions, and smallest executable slice that can test them against approved real dependencies. Reuse established contracts and scale documentation to decisions that remain unresolved.
 2. Partition components by cohesive responsibility, domain ownership, change pattern, and dependency direction rather than framework layer alone.
 3. Define interfaces and contracts, including inputs, outputs, errors, authorization, idempotency, cancellation, compatibility, and versioning where relevant.
 4. Model important flows, state transitions, transactions, concurrency, external calls, and failure recovery.
 5. Select design patterns only when their forces match the problem and document the simpler alternative considered.
 6. Define unit, component, contract, and integration test seams plus the first architecture-significant TDD slices.
 7. Specify the minimal code skeleton and engineering toolset needed for feedback, static analysis, API checks, formatting, and documentation generation. When the approved unit needs a new or changed filesystem boundary, use $implementation-workspace-layout before applying language-specific structure.
-8. Validate the design against container responsibilities and hand off bounded implementation slices with explicit acceptance evidence.
+8. Validate the design against container responsibilities and hand off bounded implementation slices with stable inputs, owned files or artifacts, completion evidence, and an integration checkpoint. Sequence the smallest complete behavior before expanding parallel implementation, with developer integration checks distinguished from later independent acceptance.
 
 ## MVP rationale
 

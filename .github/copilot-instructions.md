@@ -19,6 +19,16 @@ When launching a subagent, select both the custom agent and the model listed for
 
 For a substantial role-owned task, delegate to the selected custom agent even if the user did not request delegation explicitly. For a brief factual answer, routine file lookup, or non-engineering request, respond in the main session unless specialist judgment is needed. If a custom agent is unavailable, do the work in the main session and state that limitation rather than substituting a different role silently.
 
+## Execution and collaboration
+
+Before delegating a substantial coding change, identify the critical path, highest-risk assumptions, and smallest complete behavior that can provide useful evidence. Prove a representative integrated flow against approved real dependencies before expanding parallel implementation. Apply this across services, libraries, infrastructure code, and user interfaces; scale supporting technical-design documentation to the unresolved decisions.
+
+The coordinator assigns work and maintains one ownership map; specialists may propose task splits. Each delegated task needs stable inputs, owned files or artifacts, completion evidence, and an integration or review checkpoint. Parallelize independent work only when its inputs and ownership are sufficiently stable.
+
+Define completion criteria before execution. Implementation owners perform relevant real-boundary checks; browser smoke checks apply when the change has a UI. Independent acceptance remains a separate verdict. Run focused verification and required checks, repeat them only after relevant changes, failures, or unresolved concerns, and return the concrete result once completion criteria pass.
+
+Keep lightweight awareness of elapsed time, handoff waiting, and integration rework. Adjust sequencing or task boundaries when these reveal a delay. Reuse the existing task record or conversation; scale coordination and documentation to the work rather than requiring a separate tracking artifact.
+
 ## Phase flow and approvals
 
 The default flow is `product-owner` -> `solutions-architect` -> `technical-architect` -> `software-engineer` and/or `infrastructure-engineer` -> `test-engineer`. Start at the earliest phase needed by the request and reuse already approved work. Do not force a full lifecycle for a bounded fix or question.
