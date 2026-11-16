@@ -2,6 +2,8 @@
 
 Use this contract only while the module is enabled. Keep handoffs concise enough for the next owner to act without a duplicated transcript. Do not omit request IDs, parent IDs, status, approval gates, or material evidence.
 
+For delegated coding work, put owned files or artifacts in Approved scope, stable inputs in Relevant artifact summary, and completion evidence plus an integration checkpoint in Exact deliverable. A checkpoint may be a narrow real-boundary check or a review of an executable slice. The coordinator maintains the ownership map and watches handoff delays and integration rework in the existing task record; no separate tracking document is required.
+
 ```text
 ROLE HANDOFF
 Request ID: <stable identifier>

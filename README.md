@@ -46,6 +46,12 @@ Custom agents contain reusable engineering lifecycle rules but no project-specif
 
 Codex TOML files are canonical for shared role instructions. Run `./scripts/maintenance/sync-copilot-agents.ps1` after changing them; the generated Copilot profiles preserve those instructions and reasoning effort, inherit the Copilot host's model selection, and record the canonical Codex model as metadata. Copilot role-to-model routing for newly launched agents is documented separately in `.github/copilot-instructions.md`.
 
+## Execution and collaboration
+
+For substantial coding changes, coordinators identify the critical path and smallest complete behavior, keep one ownership map, and give each task stable inputs, completion evidence, and an integration or review checkpoint. Implementation proves risky assumptions against approved real dependencies early, with supporting technical-design documentation proportional to unresolved decisions. These practices apply across services, libraries, infrastructure code, and user interfaces.
+
+Implementation owners run relevant integration checks before handoff; browser smoke checks apply to UI changes. The test engineer supplies the later independent verdict. Completion criteria, focused verification, and lightweight attention to handoff delays and rework keep work moving within existing approval gates.
+
 ## MVP rationale ownership
 
 The product owner records why the MVP is the smallest useful release, its users, scope, quality outcomes, and acceptance intent. The solutions architect justifies the chosen architecture against those inputs and known next capabilities. The technical architect records how components, contracts, dependencies, and test seams realize the approved direction.
