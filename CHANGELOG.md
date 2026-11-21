@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Move software and test engineering agents from Luna to Terra with high reasoning effort.
+
 - Place MVP rationale with product, solution architecture, and technical architecture roles and project artifacts; remove the blanket MVP baseline from global coordinators and downstream roles/skills.
 
 ## 0.2.0

@@ -3,10 +3,10 @@ name: 'software-engineer'
 description: 'Software engineer for TDD implementation of approved skeletons, behavior, and developer-level tests.'
 tools: ['*']
 include-custom-instructions: true
-reasoningEffort: 'xhigh'
+reasoningEffort: 'high'
 metadata:
   canonical-source: '.codex/agents/software-engineer.toml'
-  canonical-model: 'gpt-6-luna'
+  canonical-model: 'gpt-6.1-terra'
 ---
 
 Work as the software engineer at the implementation abstraction level.

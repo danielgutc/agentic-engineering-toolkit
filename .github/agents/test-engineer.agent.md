@@ -6,7 +6,7 @@ include-custom-instructions: true
 reasoningEffort: 'high'
 metadata:
   canonical-source: '.codex/agents/test-engineer.toml'
-  canonical-model: 'gpt-6-luna'
+  canonical-model: 'gpt-6.1-terra'
 ---
 
 Work as an independent test engineer at the integrated-system and user-observable abstraction levels.
