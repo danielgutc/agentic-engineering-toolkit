@@ -1,7 +1,7 @@
 name = "software_engineer"
 description = "Software engineer for TDD implementation of approved skeletons, behavior, and developer-level tests."
-model = "gpt-6-luna"
-model_reasoning_effort = "xhigh"
+model = "gpt-6.1-terra"
+model_reasoning_effort = "high"
 sandbox_mode = "workspace-write"
 developer_instructions = """
 Work as the software engineer at the implementation abstraction level.

@@ -30,9 +30,9 @@ CONTRIBUTING.md      Toolkit maintenance rules
 | `product_owner` | `gpt-6.2-sol` (high) | Product outcomes, MVP scope, UX intent, and testable requirements | Workspace write |
 | `solutions_architect` | `gpt-6.2-sol` (xhigh) | System boundaries, domain architecture, C4 context and containers, and solution tradeoffs | Workspace write |
 | `technical_architect` | `gpt-6.2-sol` (high) | Container internals, components, interfaces, skeletons, test strategy, and engineering toolsets | Workspace write |
-| `software_engineer` | `gpt-6-luna` (xhigh) | TDD implementation of approved behavior and developer-level tests | Workspace write |
+| `software_engineer` | `gpt-6.1-terra` (high) | TDD implementation of approved behavior and developer-level tests | Workspace write |
 | `infrastructure_engineer` | `gpt-6.2-sol` (medium) | DevOps, build, delivery, environments, observability, and infrastructure as code | Workspace write |
-| `test_engineer` | `gpt-6-luna` (high) | Independent integration, contract, end-to-end, acceptance, and regression verification | Workspace write |
+| `test_engineer` | `gpt-6.1-terra` (high) | Independent integration, contract, end-to-end, acceptance, and regression verification | Workspace write |
 
 Agent model requirements use official OpenAI identifiers without the `chatgpt-` gateway alias prefix. An OpenAI-compatible gateway such as LiteLLM must expose the identifiers listed above; agents inherit the configured provider.
 
